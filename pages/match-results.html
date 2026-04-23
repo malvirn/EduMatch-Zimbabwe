@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Results</title>
+  <style>
+    :root {
+      --indigo: #1E2A3E;
+      --coral: #FF6B5B;
+      --teal: #2F8F7D;
+      --sand: #FFF8F0;
+      --white: #ffffff;
+      --muted: #6b7280;
+      --border: #e7ddd2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--sand);
+      color: var(--indigo);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .header {
+      background: var(--indigo);
+      color: var(--white);
+      padding: 22px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+
+    .tutor-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .tutor-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .tutor-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .score {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--white);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      color: var(--muted);
+      margin: 6px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      text-decoration: none;
+      background: var(--coral);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .status {
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="header">
+      <h1>Your Tutor Matches</h1>
+      <p>Recommended tutors fetched from the real <code>/match</code> API.</p>
+    </section>
+
+    <p class="status" id="statusText">Loading tutor matches...</p>
+    <section class="tutor-list" id="tutorList"></section>
+  </div>
+
+  <script>
+    function createTutorCard(tutor) {
+      const card = document.createElement("article");
+      card.className = "tutor-card";
+
+      const tutorId = tutor.id || tutor._id || "";
+      const profileLink = `tutor-profile.html?id=${encodeURIComponent(tutorId)}`;
+
+      card.innerHTML = `
+        <div class="score">Match Score: ${tutor.matchScore || tutor.score || "N/A"}</div>
+        <h3>${tutor.name || tutor.fullName || "Unnamed Tutor"}</h3>
+        <p class="meta"><strong>Subject:</strong> ${tutor.subject || tutor.specialty || "Not provided"}</p>
+        <p class="meta"><strong>Experience:</strong> ${tutor.experience || tutor.yearsExperience || "Not provided"}</p>
+        <p class="meta"><strong>Qualification:</strong> ${tutor.qualification || tutor.credentials || "Not provided"}</p>
+        <a class="btn" href="${profileLink}">View Full Profile</a>
+      `;
+
+      return card;
+    }
+
+    async function loadMatches() {
+      const tutorList = document.getElementById("tutorList");
+      const status = document.getElementById("statusText");
+
+      try {
+        const response = await fetch("/match", {
+          method: "GET",
+          headers: { "Accept": "application/json" }
+        });
+
+        if (!response.ok) {
+          throw new Error("Could not load tutor matches.");
+        }
+
+        const result = await response.json();
+        const tutors = Array.isArray(result) ? result : (result.matches || result.tutors || []);
+
+        tutorList.innerHTML = "";
+
+        if (!tutors.length) {
+          status.textContent = "No tutors were returned by /match.";
+          return;
+        }
+
+        tutors.forEach((tutor) => {
+          tutorList.appendChild(createTutorCard(tutor));
+        });
+
+        status.textContent = `${tutors.length} tutor match(es) loaded successfully.`;
+      } catch (error) {
+        status.textContent = error.message;
+      }
+    }
+
+    loadMatches();
+  </script>
+</body>
+</html>

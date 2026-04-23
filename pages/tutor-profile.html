@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutor Profile</title>
+  <style>
+    :root {
+      --indigo: #1E2A3E;
+      --coral: #FF6B5B;
+      --teal: #2F8F7D;
+      --sand: #FFF8F0;
+      --white: #ffffff;
+      --muted: #6b7280;
+      --border: #e7ddd2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--sand);
+      color: var(--indigo);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .profile {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .top {
+      background: var(--indigo);
+      color: var(--white);
+      padding: 24px;
+    }
+
+    .top h1 {
+      margin: 0 0 8px;
+    }
+
+    .content {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .item {
+      padding: 16px;
+      border-radius: 12px;
+      background: var(--sand);
+      border-left: 6px solid var(--teal);
+    }
+
+    .label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .value {
+      font-size: 1.05rem;
+      font-weight: bold;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--coral);
+      color: var(--white);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .status {
+      margin-top: 16px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="profile">
+      <div class="top">
+        <h1 id="tutorName">Tutor Profile</h1>
+        <p id="tutorHeadline">Loading tutor credentials...</p>
+      </div>
+
+      <div class="content">
+        <div class="item">
+          <div class="label">Subject Specialization</div>
+          <div class="value" id="tutorSubject">Loading...</div>
+        </div>
+
+        <div class="item">
+          <div class="label">Academic Qualification</div>
+          <div class="value" id="tutorQualification">Loading...</div>
+        </div>
+
+        <div class="item">
+          <div class="label">Teaching Experience</div>
+          <div class="value" id="tutorExperience">Loading...</div>
+        </div>
+
+        <div class="item">
+          <div class="label">Institution / Certification</div>
+          <div class="value" id="tutorInstitution">Loading...</div>
+        </div>
+
+        <div class="item">
+          <div class="label">Bio</div>
+          <div class="value" id="tutorBio">Loading...</div>
+        </div>
+
+        <div>
+          <a class="btn" href="match-results.html">Back to Matches</a>
+        </div>
+
+        <p class="status" id="statusText"></p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function getTutorId() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id");
+    }
+
+    async function loadTutorProfile() {
+      const tutorId = getTutorId();
+      const status = document.getElementById("statusText");
+
+      if (!tutorId) {
+        status.textContent = "No tutor ID provided in the URL.";
+        return;
+      }
+
+      try {
+        const response = await fetch(`/tutors/${tutorId}`, {
+          headers: { "Accept": "application/json" }
+        });
+
+        if (!response.ok) {
+          throw new Error("Could not load tutor profile.");
+        }
+
+        const tutor = await response.json();
+
+        document.getElementById("tutorName").textContent =
+          tutor.name || tutor.fullName || "Tutor Profile";
+
+        document.getElementById("tutorHeadline").textContent =
+          `${tutor.subject || tutor.specialty || "Subject not provided"} tutor`;
+
+        document.getElementById("tutorSubject").textContent =
+          tutor.subject || tutor.specialty || "Not provided";
+
+        document.getElementById("tutorQualification").textContent =
+          tutor.qualification || tutor.credentials || "Not provided";
+
+        document.getElementById("tutorExperience").textContent =
+          tutor.experience || tutor.yearsExperience || "Not provided";
+
+        document.getElementById("tutorInstitution").textContent =
+          tutor.institution || tutor.certification || "Not provided";
+
+        document.getElementById("tutorBio").textContent =
+          tutor.bio || tutor.about || "No tutor bio available.";
+
+        status.textContent = `Tutor credentials loaded for ID ${tutorId}.`;
+      } catch (error) {
+        status.textContent = error.message;
+      }
+    }
+
+    loadTutorProfile();
+  </script>
+</body>
+</html>

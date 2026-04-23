@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <style>
+    :root {
+      --indigo: #1E2A3E;
+      --coral: #FF6B5B;
+      --teal: #2F8F7D;
+      --sand: #FFF8F0;
+      --white: #ffffff;
+      --muted: #6b7280;
+      --border: #e7ddd2;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--sand);
+      color: var(--indigo);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .hero {
+      background: var(--indigo);
+      color: var(--white);
+      padding: 24px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .value {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background: var(--coral);
+      color: var(--white);
+    }
+
+    .btn-secondary {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .status {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <h1 id="welcomeText">Welcome, student</h1>
+      <p id="studentSummary">Loading your dashboard...</p>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <div class="label">Full Name</div>
+        <div class="value" id="studentName">Loading...</div>
+      </div>
+      <div class="card">
+        <div class="label">Email</div>
+        <div class="value" id="studentEmail">Loading...</div>
+      </div>
+      <div class="card">
+        <div class="label">Course / Subject</div>
+        <div class="value" id="studentCourse">Loading...</div>
+      </div>
+      <div class="card">
+        <div class="label">Level</div>
+        <div class="value" id="studentLevel">Loading...</div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="match-results.html">View Tutor Matches</a>
+      <a class="btn btn-secondary" href="tutor-profile.html">Open Tutor Profile</a>
+    </div>
+
+    <p class="status" id="statusText"></p>
+  </div>
+
+  <script>
+    async function loadStudent() {
+      const status = document.getElementById("statusText");
+
+      try {
+        const response = await fetch("/users/me", {
+          headers: { "Accept": "application/json" }
+        });
+
+        if (!response.ok) {
+          throw new Error("Could not load student details.");
+        }
+
+        const student = await response.json();
+
+        document.getElementById("welcomeText").textContent =
+          `Welcome, ${student.name || student.fullName || "student"}`;
+
+        document.getElementById("studentSummary").textContent =
+          "Here is your academic profile and quick access to tutor matching.";
+
+        document.getElementById("studentName").textContent =
+          student.name || student.fullName || "Not provided";
+
+        document.getElementById("studentEmail").textContent =
+          student.email || "Not provided";
+
+        document.getElementById("studentCourse").textContent =
+          student.course || student.subject || "Not provided";
+
+        document.getElementById("studentLevel").textContent =
+          student.level || student.year || "Not provided";
+
+        status.textContent = "Student data loaded from /users/me";
+      } catch (error) {
+        status.textContent = error.message;
+      }
+    }
+
+    loadStudent();
+  </script>
+</body>
+</html>
