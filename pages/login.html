@@ -4,386 +4,629 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>EduMatch Zimbabwe | Log in</title>
+    <title>Log In | EduMatch Zimbabwe</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-         :root {
-            --indigo-900: #162233;
-            --indigo-800: #1e2a3e;
-            --coral-500: #ff6b5b;
-            --coral-400: #ff8b70;
-            --teal-500: #2f8f7d;
-            --sand-100: #fff8f0;
-            --white: #ffffff;
-            --text-main: #223147;
-            --text-soft: #5d6a7e;
-            --line: rgba(30, 42, 62, 0.1);
-            --shadow-soft: 0 20px 50px rgba(22, 34, 51, 0.1);
-            --radius-xl: 32px;
-            --radius-lg: 22px;
-            --radius-md: 16px;
-            --radius-pill: 999px;
-        }
-        
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
         
+         :root {
+            --deep-indigo: #1E2A3E;
+            --vibrant-coral: #FF6B5B;
+            --seafoam-teal: #2F8F7D;
+            --warm-sand: #FFF8F0;
+            --pure-white: #FFFFFF;
+            --shadow-sm: 0 8px 20px rgba(30, 42, 62, 0.06);
+            --shadow-md: 0 20px 35px -12px rgba(30, 42, 62, 0.12);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --border-radius-md: 20px;
+            --border-radius-lg: 28px;
+            --transition-base: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+        }
+        /* Background wrapper with blur effect */
+        
         body {
-            margin: 0;
             min-height: 100vh;
-            color: var(--text-main);
-            background: radial-gradient(circle at top left, rgba(255, 107, 91, 0.16), transparent 28%), radial-gradient(circle at top right, rgba(47, 143, 125, 0.18), transparent 24%), linear-gradient(180deg, #fff8f0 0%, #ffffff 100%);
-            font-family: "Manrope", "Segoe UI", sans-serif;
-        }
-        
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-        
-        .shell {
-            width: min(1100px, calc(100% - 28px));
-            margin: 0 auto;
-        }
-        
-        .topbar {
-            padding: 24px 0 10px;
-        }
-        
-        .topbar a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 800;
-            color: var(--indigo-800);
-        }
-        
-        .layout {
-            display: grid;
-            grid-template-columns: 1fr 480px;
-            gap: 24px;
-            align-items: center;
-            min-height: calc(100vh - 90px);
-            padding: 14px 0 42px;
-        }
-        
-        .intro {
-            padding: 20px 6px 20px 0;
-        }
-        
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border-radius: var(--radius-pill);
-            background: rgba(47, 143, 125, 0.1);
-            color: var(--teal-500);
-            font-size: 0.82rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-        
-        .eyebrow::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--coral-500), var(--teal-500));
-        }
-        
-        h1 {
-            margin: 20px 0 14px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: clamp(2.4rem, 6vw, 4.2rem);
-            line-height: 1;
-            letter-spacing: -0.06em;
-            color: var(--indigo-900);
-        }
-        
-        .intro p {
-            max-width: 620px;
-            margin: 0;
-            font-size: 1.05rem;
-            color: var(--text-soft);
-        }
-        
-        .points {
-            display: grid;
-            gap: 14px;
-            margin-top: 24px;
-        }
-        
-        .point {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            padding: 16px 18px;
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.72);
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow-soft);
-        }
-        
-        .point-mark {
-            width: 34px;
-            height: 34px;
-            display: grid;
-            place-items: center;
-            border-radius: 12px;
-            color: var(--white);
-            background: linear-gradient(135deg, var(--indigo-800), var(--coral-500));
-            font-size: 0.8rem;
-            font-weight: 800;
-            flex: none;
-        }
-        
-        .point strong {
-            display: block;
-            margin-bottom: 4px;
-            color: var(--indigo-900);
-        }
-        
-        .card {
-            padding: 28px;
-            border-radius: var(--radius-xl);
-            background: rgba(255, 255, 255, 0.92);
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow-soft);
-        }
-        
-        .card h2 {
-            margin: 0 0 8px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: -0.04em;
-            color: var(--indigo-900);
-        }
-        
-        .card p {
-            margin: 0 0 20px;
-            color: var(--text-soft);
-        }
-        
-        .roles {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-        
-        .role-chip {
-            padding: 10px 14px;
-            border-radius: var(--radius-pill);
-            background: rgba(22, 34, 51, 0.06);
-            color: var(--indigo-800);
-            font-size: 0.9rem;
-            font-weight: 800;
-        }
-        
-        .field {
-            display: grid;
-            gap: 8px;
-            margin-bottom: 14px;
-        }
-        
-        .field label {
-            font-size: 0.88rem;
-            font-weight: 800;
-            color: var(--indigo-800);
-        }
-        
-        .field input,
-        .field select {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--line);
-            border-radius: var(--radius-md);
-            background: #fffdfa;
-            color: var(--text-main);
-            outline: none;
-        }
-        
-        .row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 10px;
-        }
-        
-        .btn {
-            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 14px 20px;
-            border-radius: var(--radius-pill);
-            border: 1px solid transparent;
+            padding: 24px;
+            position: relative;
+        }
+        /* Blurred background container */
+        
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .background-blur::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--warm-sand) 0%, #fff5e8 100%);
+        }
+        
+        .background-blur::after {
+            content: "";
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 107, 91, 0.15), transparent 50%), radial-gradient(circle at 80% 70%, rgba(47, 143, 125, 0.12), transparent 50%);
+            filter: blur(30px);
+        }
+        /* Animated background shapes */
+        
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .bg-shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--vibrant-coral);
+            top: -150px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .bg-shape-2 {
+            width: 350px;
+            height: 350px;
+            background: var(--seafoam-teal);
+            bottom: -120px;
+            left: -80px;
+            animation-delay: 5s;
+        }
+        
+        .bg-shape-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--deep-indigo);
+            top: 40%;
+            left: 20%;
+            animation-delay: 10s;
+            opacity: 0.2;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -40px) scale(1.05);
+            }
+            66% {
+                transform: translate(-20px, 30px) scale(0.95);
+            }
+        }
+        /* Login Container - Floating card effect */
+        
+        .login-container {
+            max-width: 460px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .login-header {
+            background: linear-gradient(135deg, var(--deep-indigo), #2a3b55);
+            padding: 40px 32px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 107, 91, 0.2), transparent);
+            border-radius: 50%;
+        }
+        
+        .logo {
+            font-size: 2rem;
             font-weight: 800;
-            cursor: pointer;
-            text-decoration: none;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            position: relative;
         }
         
-        .btn-primary {
-            color: var(--white);
-            background: linear-gradient(135deg, var(--coral-500), var(--coral-400));
-            box-shadow: 0 16px 28px rgba(255, 107, 91, 0.2);
+        .logo span {
+            color: var(--vibrant-coral);
         }
         
-        .btn-secondary {
-            color: var(--indigo-800);
-            background: rgba(255, 255, 255, 0.78);
-            border-color: var(--line);
+        .login-header p {
+            opacity: 0.85;
+            font-size: 0.95rem;
+            position: relative;
         }
         
-        .helper {
-            margin-top: 14px;
-            font-size: 0.92rem;
-            color: var(--text-soft);
+        .login-body {
+            padding: 40px 32px;
         }
         
-        .status {
-            display: none;
-            margin-top: 16px;
-            padding: 14px 16px;
-            border-radius: var(--radius-md);
-            background: rgba(47, 143, 125, 0.08);
-            color: var(--teal-500);
-            font-weight: 800;
+        .form-group {
+            margin-bottom: 24px;
         }
         
-        .status.show {
+        label {
             display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--deep-indigo);
+            font-size: 0.9rem;
         }
         
-        @media (max-width: 900px) {
-            .layout {
-                grid-template-columns: 1fr;
+        .input-wrapper {
+            position: relative;
+        }
+        
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--seafoam-teal);
+            font-size: 1.1rem;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            border: 1.5px solid rgba(30, 42, 62, 0.12);
+            border-radius: 14px;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            font-family: inherit;
+            background: white;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: var(--vibrant-coral);
+            box-shadow: 0 0 0 3px rgba(255, 107, 91, 0.1);
+        }
+        
+        .btn-login {
+            width: 100%;
+            background: linear-gradient(135deg, var(--vibrant-coral), #ff5a48);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+            margin-top: 8px;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 91, 0.35);
+        }
+        
+        .btn-login:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 28px 0 24px;
+            color: #aaa;
+            font-size: 0.8rem;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(30, 42, 62, 0.1);
+        }
+        /* Social Login Buttons */
+        
+        .social-login {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid rgba(30, 42, 62, 0.12);
+            border-radius: 14px;
+            background: var(--pure-white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--deep-indigo);
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+            border-color: rgba(30, 42, 62, 0.2);
+        }
+        
+        .social-btn i {
+            font-size: 1.3rem;
+        }
+        
+        .social-btn.google i {
+            color: #DB4437;
+        }
+        
+        .social-btn.facebook i {
+            color: #4267B2;
+        }
+        
+        .social-btn.apple i {
+            color: #000000;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .register-link a {
+            color: var(--seafoam-teal);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            background: rgba(255, 107, 91, 0.1);
+            border-left: 3px solid var(--vibrant-coral);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            color: var(--vibrant-coral);
+            font-size: 0.85rem;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+            animation: shake 0.3s ease;
+        }
+        
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            75% {
+                transform: translateX(5px);
             }
         }
         
-        @media (max-width: 560px) {
-            .row {
-                grid-template-columns: 1fr;
+        @media (max-width: 520px) {
+            body {
+                padding: 16px;
             }
-            .card {
-                padding: 22px;
+            .login-body {
+                padding: 32px 24px;
+            }
+            .login-header {
+                padding: 32px 24px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="shell topbar">
-        <a href="index.html">&larr; Back to home</a>
+    <!-- Blurred background with floating shapes -->
+    <div class="background-blur">
+        <div class="bg-shape bg-shape-1"></div>
+        <div class="bg-shape bg-shape-2"></div>
+        <div class="bg-shape bg-shape-3"></div>
     </div>
 
-    <main class="shell layout">
-        <section class="intro">
-            <span class="eyebrow">Secure account access</span>
-            <h1>Log in and continue your learning journey.</h1>
-            <p>
-                Access your EduMatch account to review matches, track learner progress, manage guardian oversight, and continue tutoring sessions with localized payment confidence.
-            </p>
-
-            <div class="points">
-                <div class="point">
-                    <span class="point-mark">01</span>
-                    <div>
-                        <strong>Students and parents</strong> Review tutor matches, lesson plans, and progress updates from one place.
-                    </div>
-                </div>
-                <div class="point">
-                    <span class="point-mark">02</span>
-                    <div>
-                        <strong>Tutors</strong> Stay organized with verified profiles, session readiness, and academic alignment.
-                    </div>
-                </div>
-                <div class="point">
-                    <span class="point-mark">03</span>
-                    <div>
-                        <strong>Low-bandwidth friendly</strong> Keep the interface lightweight while still giving users a clear sign-in path.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="card">
-            <h2>Welcome back</h2>
-            <p>Use this prototype screen to represent the EduMatch sign-in flow.</p>
-
-            <div class="roles" aria-label="Supported account types">
-                <span class="role-chip">Student</span>
-                <span class="role-chip">Parent</span>
-                <span class="role-chip">Tutor</span>
-            </div>
-
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo">EDUMATCH<span>.zw</span></div>
+            <p>Welcome back! Log in to continue your learning journey</p>
+        </div>
+        <div class="login-body">
+            <div id="errorMessage" class="error-message"></div>
             <form id="loginForm">
-                <div class="field">
-                    <label for="loginRole">Account type</label>
-                    <select id="loginRole" name="role">
-            <option value="student">Student</option>
-            <option value="parent">Parent / Guardian</option>
-            <option value="tutor">Tutor</option>
-          </select>
-                </div>
-
-                <div class="field">
-                    <label for="email">Email or mobile number</label>
-                    <input id="email" name="email" type="text" placeholder="name@example.com or 07xx xxx xxx">
-                </div>
-
-                <div class="row">
-                    <div class="field">
-                        <label for="password">Password</label>
-                        <input id="password" name="password" type="password" placeholder="Enter your password">
-                    </div>
-
-                    <div class="field">
-                        <label for="location">Preferred region</label>
-                        <select id="location" name="location">
-              <option>Harare</option>
-              <option>Bulawayo</option>
-              <option>Chinhoyi</option>
-              <option>Mutare</option>
-              <option>Remote / Any</option>
-            </select>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="student@example.com" required>
                     </div>
                 </div>
-
-                <div class="actions">
-                    <button class="btn btn-primary" type="submit">Log in</button>
-                    <a class="btn btn-secondary" href="register.html">Create account</a>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
                 </div>
+                <button type="submit" class="btn-login" id="loginBtn">Log In →</button>
             </form>
 
-            <div class="status" id="loginStatus"></div>
-            <div class="helper">Prototype note: this screen is for UI flow and does not connect to a backend yet.</div>
-        </section>
-    </main>
+            <div class="divider">
+                <span>or continue with</span>
+            </div>
+
+            <div class="social-login">
+                <button class="social-btn google" onclick="socialLogin('google')">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+                <button class="social-btn facebook" onclick="socialLogin('facebook')">
+                    <i class="fab fa-facebook-f"></i>
+                    Continue with Facebook
+                </button>
+                <button class="social-btn apple" onclick="socialLogin('apple')">
+                    <i class="fab fa-apple"></i>
+                    Continue with Apple
+                </button>
+            </div>
+
+            <div class="register-link">
+                Don't have an account? <a href="register.html">Sign up now →</a>
+            </div>
+        </div>
+    </div>
 
     <script>
-        const loginForm = document.getElementById("loginForm");
-        const loginStatus = document.getElementById("loginStatus");
+        const API_BASE_URL = localStorage.getItem('API_BASE_URL') || 'https://edumatch-backend.onrender.com/api';
+        const USE_MOCK = true;
 
-        if (loginForm && loginStatus) {
-            loginForm.addEventListener("submit", (event) => {
-                event.preventDefault();
-                const role = document.getElementById("loginRole").value;
-                loginStatus.textContent = `Prototype login captured for ${role}. Connect this form to your real authentication flow next.`;
-                loginStatus.classList.add("show");
-            });
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+            setTimeout(() => {
+                errorDiv.classList.remove('show');
+            }, 4000);
         }
+
+        // Demo credentials for testing
+        const demoUsers = {
+            student: {
+                email: 'student@edumatch.zw',
+                password: 'student123',
+                role: 'student',
+                name: 'Tinashe Student'
+            },
+            tutor: {
+                email: 'tutor@edumatch.zw',
+                password: 'tutor123',
+                role: 'tutor',
+                name: 'Mr. Chikwanha'
+            }
+        };
+
+        async function handleLogin(email, password) {
+            const backendOnline = localStorage.getItem('backend_online') === 'true';
+
+            if (!USE_MOCK && backendOnline) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email,
+                            password
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok && data.access_token) {
+                        localStorage.setItem('access_token', data.access_token);
+                        localStorage.setItem('refresh_token', data.refresh_token || '');
+                        localStorage.setItem('user_role', data.user ? .role || data.role || 'student');
+                        localStorage.setItem('user_email', email);
+                        localStorage.setItem('user_name', data.user ? .name || email.split('@')[0]);
+
+                        const userRole = localStorage.getItem('user_role');
+                        if (userRole === 'tutor') {
+                            window.location.href = 'tutor-dashboard.html';
+                        } else {
+                            window.location.href = 'student-dashboard.html';
+                        }
+                        return true;
+                    } else {
+                        showError(data.message || 'Invalid email or password');
+                        return false;
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    showError('Network error. Please try again.');
+                    return false;
+                }
+            } else {
+                // MOCK AUTHENTICATION
+                const mockUser = demoUsers.student;
+                const mockTutor = demoUsers.tutor;
+
+                if (email === mockUser.email && password === mockUser.password) {
+                    const mockToken = btoa(JSON.stringify({
+                        email,
+                        role: 'student',
+                        exp: Date.now() + 86400000
+                    }));
+                    localStorage.setItem('access_token', mockToken);
+                    localStorage.setItem('user_role', 'student');
+                    localStorage.setItem('user_email', email);
+                    localStorage.setItem('user_name', 'Tinashe Student');
+                    window.location.href = 'student-dashboard.html';
+                    return true;
+                } else if (email === mockTutor.email && password === mockTutor.password) {
+                    const mockToken = btoa(JSON.stringify({
+                        email,
+                        role: 'tutor',
+                        exp: Date.now() + 86400000
+                    }));
+                    localStorage.setItem('access_token', mockToken);
+                    localStorage.setItem('user_role', 'tutor');
+                    localStorage.setItem('user_email', email);
+                    localStorage.setItem('user_name', 'Mr. Chikwanha');
+                    window.location.href = 'tutor-dashboard.html';
+                    return true;
+                } else {
+                    showError('Invalid email or password. Try student@edumatch.zw / student123');
+                    return false;
+                }
+            }
+        }
+
+        // Social Login Handler
+        function socialLogin(provider) {
+            const btn = document.getElementById('loginBtn');
+            btn.disabled = true;
+            btn.textContent = `Redirecting to ${provider}...`;
+
+            // For demo purposes - create mock session
+            setTimeout(() => {
+                const mockEmail = `${provider}_user@edumatch.zw`;
+                const mockToken = btoa(JSON.stringify({
+                    email: mockEmail,
+                    role: 'student',
+                    exp: Date.now() + 86400000,
+                    provider
+                }));
+                localStorage.setItem('access_token', mockToken);
+                localStorage.setItem('user_role', 'student');
+                localStorage.setItem('user_email', mockEmail);
+                localStorage.setItem('user_name', `${provider.charAt(0).toUpperCase() + provider.slice(1)} User`);
+
+                // In production, redirect to OAuth provider
+                showError(`Demo: ${provider} login simulation. Redirecting to dashboard...`);
+
+                setTimeout(() => {
+                    window.location.href = 'student-dashboard.html';
+                }, 1500);
+            }, 1000);
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', async(e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                showError('Please enter both email and password');
+                return;
+            }
+
+            const btn = document.getElementById('loginBtn');
+            btn.disabled = true;
+            btn.textContent = 'Logging in...';
+
+            await handleLogin(email, password);
+
+            btn.disabled = false;
+            btn.textContent = 'Log In →';
+        });
+
+        // Check if already logged in
+        const token = localStorage.getItem('access_token');
+        const userRole = localStorage.getItem('user_role');
+        if (token && userRole) {
+            if (userRole === 'tutor') {
+                window.location.href = 'tutor-dashboard.html';
+            } else {
+                window.location.href = 'student-dashboard.html';
+            }
+        }
+
+        async function checkBackendHealth() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`, {
+                    method: 'GET'
+                });
+                if (response.ok) {
+                    localStorage.setItem('backend_online', 'true');
+                } else {
+                    throw new Error('Health check failed');
+                }
+            } catch (error) {
+                console.warn('Backend health check:', error);
+                if (USE_MOCK) {
+                    localStorage.setItem('backend_online', 'true');
+                } else {
+                    localStorage.setItem('backend_online', 'false');
+                }
+            }
+        }
+
+        checkBackendHealth();
     </script>
 </body>
 

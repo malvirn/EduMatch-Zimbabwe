@@ -4,458 +4,781 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>EduMatch Zimbabwe | Sign up</title>
+    <title>Sign Up | EduMatch Zimbabwe</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-         :root {
-            --indigo-900: #162233;
-            --indigo-800: #1e2a3e;
-            --coral-500: #ff6b5b;
-            --coral-400: #ff8b70;
-            --teal-500: #2f8f7d;
-            --sand-100: #fff8f0;
-            --white: #ffffff;
-            --text-main: #223147;
-            --text-soft: #5d6a7e;
-            --line: rgba(30, 42, 62, 0.1);
-            --shadow-soft: 0 20px 50px rgba(22, 34, 51, 0.1);
-            --radius-xl: 32px;
-            --radius-lg: 22px;
-            --radius-md: 16px;
-            --radius-pill: 999px;
-        }
-        
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
         
+         :root {
+            --deep-indigo: #1E2A3E;
+            --vibrant-coral: #FF6B5B;
+            --seafoam-teal: #2F8F7D;
+            --warm-sand: #FFF8F0;
+            --pure-white: #FFFFFF;
+            --shadow-sm: 0 8px 20px rgba(30, 42, 62, 0.06);
+            --shadow-md: 0 20px 35px -12px rgba(30, 42, 62, 0.12);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --border-radius-md: 20px;
+            --border-radius-lg: 28px;
+            --transition-base: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+        }
+        /* Background wrapper with blur effect */
+        
         body {
-            margin: 0;
             min-height: 100vh;
-            color: var(--text-main);
-            background: radial-gradient(circle at top left, rgba(95, 181, 160, 0.18), transparent 30%), radial-gradient(circle at top right, rgba(255, 107, 91, 0.14), transparent 24%), linear-gradient(180deg, #fff8f0 0%, #ffffff 100%);
-            font-family: "Manrope", "Segoe UI", sans-serif;
-        }
-        
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-        
-        .shell {
-            width: min(1160px, calc(100% - 28px));
-            margin: 0 auto;
-        }
-        
-        .topbar {
-            padding: 24px 0 10px;
-        }
-        
-        .topbar a {
-            display: inline-flex;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: 800;
-            color: var(--indigo-800);
+            justify-content: center;
+            padding: 24px;
+            position: relative;
+        }
+        /* Blurred background container */
+        
+        .background-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
         }
         
-        .layout {
-            display: grid;
-            grid-template-columns: 1.02fr 0.98fr;
-            gap: 24px;
-            align-items: start;
-            padding: 12px 0 42px;
-        }
-        
-        .intro {
-            padding: 22px 8px 12px 0;
-        }
-        
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border-radius: var(--radius-pill);
-            background: rgba(47, 143, 125, 0.1);
-            color: var(--teal-500);
-            font-size: 0.82rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-        
-        .eyebrow::before {
+        .background-blur::before {
             content: "";
-            width: 8px;
-            height: 8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--warm-sand) 0%, #fff5e8 100%);
+        }
+        
+        .background-blur::after {
+            content: "";
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 107, 91, 0.15), transparent 50%), radial-gradient(circle at 80% 70%, rgba(47, 143, 125, 0.12), transparent 50%);
+            filter: blur(30px);
+        }
+        /* Animated background shapes */
+        
+        .bg-shape {
+            position: absolute;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--coral-500), var(--teal-500));
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
         }
         
-        h1 {
-            margin: 20px 0 14px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: clamp(2.4rem, 6vw, 4.15rem);
-            line-height: 1;
-            letter-spacing: -0.06em;
-            color: var(--indigo-900);
+        .bg-shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--vibrant-coral);
+            top: -150px;
+            right: -100px;
+            animation-delay: 0s;
         }
         
-        .intro p {
-            max-width: 620px;
-            margin: 0;
-            font-size: 1.05rem;
-            color: var(--text-soft);
+        .bg-shape-2 {
+            width: 350px;
+            height: 350px;
+            background: var(--seafoam-teal);
+            bottom: -120px;
+            left: -80px;
+            animation-delay: 5s;
         }
         
-        .feature-stack {
-            display: grid;
-            gap: 14px;
-            margin-top: 26px;
+        .bg-shape-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--deep-indigo);
+            top: 40%;
+            left: 20%;
+            animation-delay: 10s;
+            opacity: 0.2;
         }
         
-        .feature {
-            padding: 18px 20px;
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.78);
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow-soft);
+        @keyframes float {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -40px) scale(1.05);
+            }
+            66% {
+                transform: translate(-20px, 30px) scale(0.95);
+            }
+        }
+        /* Register Container - Floating card effect */
+        
+        .register-container {
+            max-width: 540px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 10;
         }
         
-        .feature strong {
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .register-header {
+            background: linear-gradient(135deg, var(--deep-indigo), #2a3b55);
+            padding: 40px 32px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .register-header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 107, 91, 0.2), transparent);
+            border-radius: 50%;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .logo span {
+            color: var(--vibrant-coral);
+        }
+        
+        .register-header p {
+            opacity: 0.85;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .register-body {
+            padding: 40px 32px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            width: 100%;
+        }
+        
+        label {
             display: block;
-            margin-bottom: 6px;
-            color: var(--indigo-900);
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--deep-indigo);
+            font-size: 0.9rem;
         }
         
-        .card {
-            padding: 28px;
-            border-radius: var(--radius-xl);
-            background: rgba(255, 255, 255, 0.92);
-            border: 1px solid var(--line);
-            box-shadow: var(--shadow-soft);
+        .input-wrapper {
+            position: relative;
         }
         
-        .card h2 {
-            margin: 0 0 8px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: -0.04em;
-            color: var(--indigo-900);
+        .input-wrapper i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--seafoam-teal);
+            font-size: 1.1rem;
         }
         
-        .card p {
-            margin: 0 0 18px;
-            color: var(--text-soft);
+        input,
+        select {
+            width: 100%;
+            padding: 14px 16px 14px 48px;
+            border: 1.5px solid rgba(30, 42, 62, 0.12);
+            border-radius: 14px;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            font-family: inherit;
+            background: white;
         }
         
-        .role-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-            margin-bottom: 18px;
+        select {
+            padding-left: 48px;
+            cursor: pointer;
+        }
+        
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--vibrant-coral);
+            box-shadow: 0 0 0 3px rgba(255, 107, 91, 0.1);
+        }
+        
+        .role-selector {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
         }
         
         .role-option {
-            padding: 14px 16px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--line);
-            background: rgba(22, 34, 51, 0.04);
-            color: var(--indigo-800);
-            font-weight: 800;
+            flex: 1;
+            text-align: center;
+            padding: 16px;
+            border: 2px solid rgba(30, 42, 62, 0.1);
+            border-radius: 18px;
             cursor: pointer;
-            text-align: left;
+            transition: var(--transition-base);
+            background: rgba(255, 255, 255, 0.6);
         }
         
-        .role-option span {
+        .role-option i {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
             display: block;
-            margin-top: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-soft);
+            color: var(--deep-indigo);
         }
         
-        .role-option.active {
-            border-color: rgba(47, 143, 125, 0.28);
-            background: rgba(47, 143, 125, 0.1);
-            box-shadow: inset 0 0 0 1px rgba(47, 143, 125, 0.15);
+        .role-option.selected {
+            border-color: var(--vibrant-coral);
+            background: rgba(255, 107, 91, 0.08);
+            transform: translateY(-2px);
         }
         
-        .field {
-            display: grid;
-            gap: 8px;
-            margin-bottom: 14px;
+        .role-option.selected i {
+            color: var(--vibrant-coral);
         }
         
-        .field label {
-            font-size: 0.88rem;
-            font-weight: 800;
-            color: var(--indigo-800);
-        }
-        
-        .field input,
-        .field select,
-        .field textarea {
+        .btn-register {
             width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--line);
-            border-radius: var(--radius-md);
-            background: #fffdfa;
-            color: var(--text-main);
-            outline: none;
+            background: linear-gradient(135deg, var(--vibrant-coral), #ff5a48);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-base);
+            margin-top: 8px;
         }
         
-        .field textarea {
-            min-height: 110px;
-            resize: vertical;
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 91, 0.35);
         }
         
-        .row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+        .btn-register:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
         
-        .actions {
+        .divider {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 12px;
+            align-items: center;
+            gap: 16px;
+            margin: 28px 0 24px;
+            color: #aaa;
+            font-size: 0.8rem;
         }
         
-        .btn {
-            display: inline-flex;
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(30, 42, 62, 0.1);
+        }
+        /* Social Signup Buttons */
+        
+        .social-signup {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .social-btn {
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 14px 20px;
-            border-radius: var(--radius-pill);
-            border: 1px solid transparent;
-            font-weight: 800;
+            gap: 12px;
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid rgba(30, 42, 62, 0.12);
+            border-radius: 14px;
+            background: var(--pure-white);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--deep-indigo);
             cursor: pointer;
-            text-decoration: none;
+            transition: var(--transition-base);
         }
         
-        .btn-primary {
-            color: var(--white);
-            background: linear-gradient(135deg, var(--coral-500), var(--coral-400));
-            box-shadow: 0 16px 28px rgba(255, 107, 91, 0.2);
+        .social-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+            border-color: rgba(30, 42, 62, 0.2);
         }
         
-        .btn-secondary {
-            color: var(--indigo-800);
-            background: rgba(255, 255, 255, 0.78);
-            border-color: var(--line);
+        .social-btn i {
+            font-size: 1.3rem;
         }
         
-        .role-note {
-            margin-top: -4px;
-            margin-bottom: 14px;
+        .social-btn.google i {
+            color: #DB4437;
+        }
+        
+        .social-btn.facebook i {
+            color: #4267B2;
+        }
+        
+        .social-btn.apple i {
+            color: #000000;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
             font-size: 0.9rem;
-            color: var(--teal-500);
-            font-weight: 800;
+            color: #666;
         }
         
-        .status {
+        .login-link a {
+            color: var(--seafoam-teal);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            background: rgba(255, 107, 91, 0.1);
+            border-left: 3px solid var(--vibrant-coral);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            color: var(--vibrant-coral);
+            font-size: 0.85rem;
             display: none;
-            margin-top: 16px;
-            padding: 14px 16px;
-            border-radius: var(--radius-md);
-            background: rgba(47, 143, 125, 0.08);
-            color: var(--teal-500);
-            font-weight: 800;
         }
         
-        .status.show {
+        .error-message.show {
+            display: block;
+            animation: shake 0.3s ease;
+        }
+        
+        .success-message {
+            background: rgba(47, 143, 125, 0.1);
+            border-left: 3px solid var(--seafoam-teal);
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            color: var(--seafoam-teal);
+            font-size: 0.85rem;
+            display: none;
+        }
+        
+        .success-message.show {
             display: block;
         }
         
-        @media (max-width: 920px) {
-            .layout {
-                grid-template-columns: 1fr;
+        @keyframes shake {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-5px);
+            }
+            75% {
+                transform: translateX(5px);
             }
         }
         
         @media (max-width: 560px) {
-            .row,
-            .role-grid {
-                grid-template-columns: 1fr;
+            body {
+                padding: 16px;
             }
-            .card {
-                padding: 22px;
+            .register-body {
+                padding: 28px 20px;
+            }
+            .register-header {
+                padding: 32px 24px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .role-selector {
+                gap: 10px;
+            }
+            .role-option {
+                padding: 12px;
+            }
+            .role-option i {
+                font-size: 1.4rem;
+            }
+            .role-option strong {
+                font-size: 0.85rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="shell topbar">
-        <a href="index.html">&larr; Back to home</a>
+    <!-- Blurred background with floating shapes -->
+    <div class="background-blur">
+        <div class="bg-shape bg-shape-1"></div>
+        <div class="bg-shape bg-shape-2"></div>
+        <div class="bg-shape bg-shape-3"></div>
     </div>
 
-    <main class="shell layout">
-        <section class="intro">
-            <span class="eyebrow">Join EduMatch Zimbabwe</span>
-            <h1>Sign up for the role you actually play in the learning journey.</h1>
-            <p>
-                EduMatch is a dual-sided marketplace, so registration should feel intentional. Students, parents, tutors, and schools each need a clear starting point and a platform experience designed around them.
-            </p>
+    <div class="register-container">
+        <div class="register-header">
+            <div class="logo">EDUMATCH<span>.zw</span></div>
+            <p>Join Zimbabwe's most intelligent tutoring marketplace</p>
+        </div>
+        <div class="register-body">
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
 
-            <div class="feature-stack">
-                <div class="feature">
-                    <strong>Students and parents</strong> Register to request tutors, track progress, monitor sessions, and access localized payment trust.
+            <div class="role-selector" id="roleSelector">
+                <div class="role-option" data-role="student">
+                    <i class="fas fa-user-graduate"></i>
+                    <strong>Student</strong>
+                    <p style="font-size: 0.7rem; margin-top: 4px;">Find tutors & learn</p>
                 </div>
-                <div class="feature">
-                    <strong>Tutors</strong> Build a professional presence around your verified qualifications, subject expertise, and teaching fit.
+                <div class="role-option" data-role="tutor">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <strong>Tutor</strong>
+                    <p style="font-size: 0.7rem; margin-top: 4px;">Teach & earn</p>
                 </div>
-                <div class="feature">
-                    <strong>Localized onboarding</strong> Keep sign-up clear for ZIMSEC, Cambridge, and tertiary pathways without overwhelming first-time users.
+                <div class="role-option" data-role="parent">
+                    <i class="fas fa-users"></i>
+                    <strong>Parent</strong>
+                    <p style="font-size: 0.7rem; margin-top: 4px;">Monitor progress</p>
                 </div>
             </div>
-        </section>
-
-        <section class="card">
-            <h2>Create your account</h2>
-            <p>Choose your role first so EduMatch can tailor the onboarding flow.</p>
-
-            <div class="role-grid" id="roleGrid">
-                <button class="role-option active" type="button" data-role="student">
-          Student
-          <span>Find tutors and track progress</span>
-        </button>
-                <button class="role-option" type="button" data-role="parent">
-          Parent / Guardian
-          <span>Monitor sessions and releases</span>
-        </button>
-                <button class="role-option" type="button" data-role="tutor">
-          Tutor
-          <span>Offer verified academic support</span>
-        </button>
-                <button class="role-option" type="button" data-role="school">
-          School / Institution
-          <span>Coordinate structured learning support</span>
-        </button>
-            </div>
-
-            <div class="role-note" id="roleNote">Selected role: Student</div>
 
             <form id="registerForm">
-                <input id="selectedRole" name="role" type="hidden" value="student">
-
-                <div class="row">
-                    <div class="field">
-                        <label for="fullName">Full name</label>
-                        <input id="fullName" name="fullName" type="text" placeholder="Enter your full name">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="fullName" placeholder="e.g., Tinashe Moyo" required>
+                        </div>
                     </div>
-
-                    <div class="field">
-                        <label for="email">Email address</label>
-                        <input id="email" name="email" type="email" placeholder="name@example.com">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="field">
-                        <label for="phone">Phone number</label>
-                        <input id="phone" name="phone" type="tel" placeholder="07xx xxx xxx">
-                    </div>
-
-                    <div class="field">
-                        <label for="location">City or region</label>
-                        <select id="location" name="location">
-              <option>Harare</option>
-              <option>Bulawayo</option>
-              <option>Chinhoyi</option>
-              <option>Mutare</option>
-              <option>Gweru</option>
-              <option>Remote / Any</option>
-            </select>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="phone" placeholder="+263 77 123 4567">
+                        </div>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="field">
-                        <label for="pathway">Academic pathway</label>
-                        <select id="pathway" name="pathway">
-              <option>ZIMSEC</option>
-              <option>Cambridge</option>
-              <option>Tertiary / University</option>
-              <option>Mixed support</option>
-            </select>
-                    </div>
-
-                    <div class="field">
-                        <label for="focus">Main need</label>
-                        <input id="focus" name="focus" type="text" placeholder="Example: O-Level Maths or HCS 115">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="student@example.com" required>
                     </div>
                 </div>
 
-                <div class="field">
-                    <label for="about">Short note</label>
-                    <textarea id="about" name="about" placeholder="Tell EduMatch what kind of support you want to receive or provide."></textarea>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" placeholder="Min. 6 characters" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-check-circle"></i>
+                            <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="actions">
-                    <button class="btn btn-primary" id="registerButton" type="submit">Create account</button>
-                    <a class="btn btn-secondary" href="login.html">Already have an account?</a>
+                <div class="form-group" id="locationGroup">
+                    <label>Location (Optional)</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="location" placeholder="e.g., Harare, Bulawayo, Chinhoyi">
+                    </div>
                 </div>
+
+                <div class="form-group full-width" id="subjectsGroup" style="display: none;">
+                    <label>Subjects / Expertise</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-book"></i>
+                        <input type="text" id="subjects" placeholder="e.g., Mathematics, English, Physics (comma separated)">
+                    </div>
+                </div>
+
+                <input type="hidden" id="userRole" value="student">
+                <button type="submit" class="btn-register" id="registerBtn">Create Account →</button>
             </form>
 
-            <div class="status" id="registerStatus"></div>
-        </section>
-    </main>
+            <div class="divider">
+                <span>or sign up with</span>
+            </div>
+
+            <div class="social-signup">
+                <button class="social-btn google" onclick="socialSignup('google')">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </button>
+                <button class="social-btn facebook" onclick="socialSignup('facebook')">
+                    <i class="fab fa-facebook-f"></i>
+                    Continue with Facebook
+                </button>
+                <button class="social-btn apple" onclick="socialSignup('apple')">
+                    <i class="fab fa-apple"></i>
+                    Continue with Apple
+                </button>
+            </div>
+
+            <div class="login-link">
+                Already have an account? <a href="login.html">Log in here →</a>
+            </div>
+        </div>
+    </div>
 
     <script>
-        const roleGrid = document.getElementById("roleGrid");
-        const selectedRole = document.getElementById("selectedRole");
-        const roleNote = document.getElementById("roleNote");
-        const registerButton = document.getElementById("registerButton");
-        const registerForm = document.getElementById("registerForm");
-        const registerStatus = document.getElementById("registerStatus");
+        const API_BASE_URL = localStorage.getItem('API_BASE_URL') || 'https://edumatch-backend.onrender.com/api';
+        const USE_MOCK = true;
 
-        const roleLabels = {
-            student: "Student",
-            parent: "Parent / Guardian",
-            tutor: "Tutor",
-            school: "School / Institution"
-        };
+        // Role selection UI
+        const roleOptions = document.querySelectorAll('.role-option');
+        const userRoleInput = document.getElementById('userRole');
+        const subjectsGroup = document.getElementById('subjectsGroup');
 
-        function applyRole(role) {
-            const normalizedRole = roleLabels[role] ? role : "student";
-            selectedRole.value = normalizedRole;
-            roleNote.textContent = `Selected role: ${roleLabels[normalizedRole]}`;
-            registerButton.textContent = normalizedRole === "tutor" ? "Become a Tutor" : "Create account";
+        roleOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                roleOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                const role = option.dataset.role;
+                userRoleInput.value = role;
 
-            document.querySelectorAll(".role-option").forEach((button) => {
-                button.classList.toggle("active", button.dataset.role === normalizedRole);
-            });
-        }
-
-        if (roleGrid) {
-            roleGrid.addEventListener("click", (event) => {
-                const button = event.target.closest(".role-option");
-                if (!button) {
-                    return;
+                if (role === 'tutor') {
+                    subjectsGroup.style.display = 'block';
+                } else {
+                    subjectsGroup.style.display = 'none';
                 }
-
-                applyRole(button.dataset.role);
             });
+        });
+        roleOptions[0].classList.add('selected');
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.classList.add('show');
+            setTimeout(() => errorDiv.classList.remove('show'), 4000);
         }
 
-        const params = new URLSearchParams(window.location.search);
-        applyRole(params.get("role") || "student");
-
-        if (registerForm && registerStatus) {
-            registerForm.addEventListener("submit", (event) => {
-                event.preventDefault();
-                const role = roleLabels[selectedRole.value] || "User";
-                registerStatus.textContent = `Prototype registration captured for ${role}. Connect this form to your real onboarding flow next.`;
-                registerStatus.classList.add("show");
-            });
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.classList.add('show');
+            setTimeout(() => successDiv.classList.remove('show'), 3000);
         }
+
+        async function handleRegister(data) {
+            const backendOnline = localStorage.getItem('backend_online') === 'true';
+
+            if (!USE_MOCK && backendOnline) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        showSuccess('Account created successfully! Redirecting to login...');
+                        setTimeout(() => {
+                            window.location.href = 'login.html';
+                        }, 2000);
+                        return true;
+                    } else {
+                        showError(result.message || 'Registration failed');
+                        return false;
+                    }
+                } catch (error) {
+                    showError('Network error. Please try again.');
+                    return false;
+                }
+            } else {
+                showSuccess('Account created successfully! Redirecting to login...');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+                return true;
+            }
+        }
+
+        // Social Signup Handler
+        function socialSignup(provider) {
+            const btn = document.getElementById('registerBtn');
+            btn.disabled = true;
+            btn.textContent = `Redirecting to ${provider}...`;
+
+            // For demo purposes - create mock session and redirect
+            setTimeout(() => {
+                const mockEmail = `${provider}_user@edumatch.zw`;
+                const mockToken = btoa(JSON.stringify({
+                    email: mockEmail,
+                    role: 'student',
+                    exp: Date.now() + 86400000,
+                    provider,
+                    name: `${provider.charAt(0).toUpperCase() + provider.slice(1)} User`
+                }));
+                localStorage.setItem('access_token', mockToken);
+                localStorage.setItem('user_role', 'student');
+                localStorage.setItem('user_email', mockEmail);
+                localStorage.setItem('user_name', `${provider.charAt(0).toUpperCase() + provider.slice(1)} User`);
+
+                showSuccess(`Welcome! Your ${provider} account has been connected. Redirecting to dashboard...`);
+
+                setTimeout(() => {
+                    window.location.href = 'student-dashboard.html';
+                }, 1500);
+            }, 1000);
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', async(e) => {
+            e.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const phone = document.getElementById('phone').value.trim();
+            const location = document.getElementById('location').value.trim();
+            const role = userRoleInput.value;
+            const subjects = document.getElementById('subjects').value.trim();
+
+            if (!fullName || !email || !password) {
+                showError('Please fill in all required fields');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showError('Passwords do not match');
+                return;
+            }
+
+            if (password.length < 6) {
+                showError('Password must be at least 6 characters');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('Please enter a valid email address');
+                return;
+            }
+
+            const btn = document.getElementById('registerBtn');
+            btn.disabled = true;
+            btn.textContent = 'Creating account...';
+
+            const registrationData = {
+                name: fullName,
+                email,
+                password,
+                phone,
+                location,
+                role,
+                subjects: subjects ? subjects.split(',').map(s => s.trim()) : []
+            };
+
+            await handleRegister(registrationData);
+
+            btn.disabled = false;
+            btn.textContent = 'Create Account →';
+        });
+
+        // Check if already logged in
+        const token = localStorage.getItem('access_token');
+        if (token) {
+            const role = localStorage.getItem('user_role');
+            if (role === 'tutor') {
+                window.location.href = 'tutor-dashboard.html';
+            } else {
+                window.location.href = 'student-dashboard.html';
+            }
+        }
+
+        async function checkBackendHealth() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`, {
+                    method: 'GET'
+                });
+                if (response.ok) {
+                    localStorage.setItem('backend_online', 'true');
+                } else {
+                    throw new Error('Health check failed');
+                }
+            } catch (error) {
+                console.warn('Backend health check:', error);
+                if (USE_MOCK) {
+                    localStorage.setItem('backend_online', 'true');
+                } else {
+                    localStorage.setItem('backend_online', 'false');
+                }
+            }
+        }
+
+        checkBackendHealth();
     </script>
 </body>
 

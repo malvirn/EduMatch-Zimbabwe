@@ -4,1880 +4,748 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>EduMatch Zimbabwe | Intelligent Tutor Matching for Every Syllabus</title>
-    <meta name="description" content="EduMatch Zimbabwe is a localized tutoring marketplace that matches students and families with verified tutors using syllabus, course code, location, and trust-first payments.">
+    <title>EduMatch Zimbabwe | Learn with a Perfect Tutor Match</title>
+    <!-- Google Fonts + Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-         :root {
-            --indigo-900: #162233;
-            --indigo-800: #1e2a3e;
-            --indigo-700: #2d3d59;
-            --indigo-100: #d8e2f0;
-            --coral-500: #ff6b5b;
-            --coral-400: #ff8b70;
-            --teal-500: #2f8f7d;
-            --teal-400: #5fb5a0;
-            --sand-100: #fff8f0;
-            --sand-200: #f7e8d7;
-            --sand-300: #efd3b4;
-            --white: #ffffff;
-            --text-main: #223147;
-            --text-soft: #5d6a7e;
-            --line: rgba(30, 42, 62, 0.1);
-            --shadow-soft: 0 18px 45px rgba(22, 34, 51, 0.08);
-            --shadow-strong: 0 28px 60px rgba(22, 34, 51, 0.16);
-            --radius-xl: 36px;
-            --radius-lg: 26px;
-            --radius-md: 18px;
-            --radius-pill: 999px;
-            --wrap: 1200px;
-            --transition: 220ms ease;
-        }
-        
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
         
-        html {
-            scroll-behavior: smooth;
+         :root {
+            --deep-indigo: #1E2A3E;
+            --vibrant-coral: #FF6B5B;
+            --seafoam-teal: #2F8F7D;
+            --warm-sand: #FFF8F0;
+            --pure-white: #FFFFFF;
+            --glass-bg: rgba(255, 248, 240, 0.96);
+            --shadow-xs: 0 4px 12px rgba(30, 42, 62, 0.04);
+            --shadow-sm: 0 8px 20px rgba(30, 42, 62, 0.06);
+            --shadow-md: 0 20px 35px -12px rgba(30, 42, 62, 0.12);
+            --shadow-lg: 0 25px 40px -12px rgba(30, 42, 62, 0.2);
+            --border-radius-sm: 12px;
+            --border-radius-md: 20px;
+            --border-radius-lg: 32px;
+            --transition-base: all 0.25s cubic-bezier(0.2, 0, 0, 1);
         }
         
         body {
-            margin: 0;
-            min-width: 320px;
-            color: var(--text-main);
-            background: radial-gradient(circle at top left, rgba(255, 139, 112, 0.16), transparent 32%), radial-gradient(circle at top right, rgba(95, 181, 160, 0.18), transparent 24%), linear-gradient(180deg, #fff7ee 0%, #fff9f4 38%, #ffffff 100%);
-            font-family: "Manrope", "Segoe UI", sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: var(--warm-sand);
+            color: var(--deep-indigo);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
         }
         
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-        
-        img {
-            display: block;
-            max-width: 100%;
-        }
-        
-        button,
-        select,
-        input {
-            font: inherit;
-        }
-        
-        .shell {
-            width: min(var(--wrap), calc(100% - 40px));
+        .container {
+            max-width: 1280px;
             margin: 0 auto;
+            padding: 0 32px;
         }
+        /* FIXED NAVBAR - Does NOT move when scrolling */
         
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 16px;
-            border-radius: var(--radius-pill);
-            background: rgba(47, 143, 125, 0.1);
-            border: 1px solid rgba(47, 143, 125, 0.16);
-            color: var(--teal-500);
-            font-size: 0.82rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-        
-        .eyebrow::before {
-            content: "";
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--coral-500), var(--teal-500));
-            box-shadow: 0 0 0 5px rgba(47, 143, 125, 0.08);
-        }
-        
-        .section-heading {
-            max-width: 720px;
-            margin-bottom: 26px;
-        }
-        
-        .section-heading h2 {
-            margin: 16px 0 12px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: clamp(2rem, 4vw, 3.15rem);
-            line-height: 1.08;
-            letter-spacing: -0.04em;
-            color: var(--indigo-900);
-        }
-        
-        .section-heading p {
-            margin: 0;
-            font-size: 1.02rem;
-            color: var(--text-soft);
-        }
-        
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 30;
-            padding: 18px 0;
+        .navbar {
+            background: rgba(255, 248, 240, 0.96);
             backdrop-filter: blur(12px);
-            background: rgba(255, 248, 240, 0.72);
-            border-bottom: 1px solid rgba(30, 42, 62, 0.05);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            top: 38px;
+            /* Below API status banner */
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(30, 42, 62, 0.08);
+        }
+        /* Add padding to body to account for fixed navbar */
+        
+        body {
+            padding-top: 110px;
+            /* Top banner (38px) + navbar (~72px) */
         }
         
-        .nav-bar {
-            position: relative;
+        .nav-flex {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
             gap: 20px;
         }
         
-        .brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: 1.15rem;
+        .logo {
+            font-size: 1.75rem;
             font-weight: 800;
-            color: var(--indigo-900);
-            letter-spacing: -0.04em;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--deep-indigo) 0%, #2a3b55 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
         
-        .brand-mark {
-            width: 42px;
-            height: 42px;
-            display: grid;
-            place-items: center;
-            border-radius: 14px;
-            color: var(--white);
-            background: linear-gradient(145deg, var(--indigo-800), var(--teal-500));
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-        }
-        
-        .brand-text span {
-            color: var(--coral-500);
+        .logo span {
+            background: linear-gradient(135deg, var(--vibrant-coral), #ff8a7a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
         
         .nav-links {
             display: flex;
+            gap: 32px;
             align-items: center;
-            gap: 26px;
-            font-size: 0.96rem;
-            color: var(--text-soft);
-            font-weight: 700;
         }
         
         .nav-links a {
-            position: relative;
-            transition: color var(--transition);
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--deep-indigo);
+            transition: var(--transition-base);
+            font-size: 0.95rem;
         }
         
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -8px;
-            width: 100%;
-            height: 2px;
-            transform: scaleX(0);
-            transform-origin: left;
-            border-radius: var(--radius-pill);
-            background: linear-gradient(90deg, var(--coral-500), var(--teal-500));
-            transition: transform var(--transition);
+        .nav-links a:hover {
+            color: var(--vibrant-coral);
         }
         
-        .nav-links a:hover,
-        .nav-links a:focus-visible {
-            color: var(--indigo-800);
-        }
-        
-        .nav-links a:hover::after,
-        .nav-links a:focus-visible::after {
-            transform: scaleX(1);
-        }
-        
-        .nav-actions {
+        .auth-buttons {
             display: flex;
-            align-items: center;
             gap: 12px;
-        }
-        
-        .nav-toggle {
-            display: none;
-            width: 46px;
-            height: 46px;
-            border: 1px solid rgba(30, 42, 62, 0.12);
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.78);
-            color: var(--indigo-800);
-            cursor: pointer;
-        }
-        
-        .nav-toggle span,
-        .nav-toggle::before,
-        .nav-toggle::after {
-            content: "";
-            display: block;
-            width: 18px;
-            height: 2px;
-            margin: 0 auto;
-            background: currentColor;
-            border-radius: var(--radius-pill);
-            transition: transform var(--transition), opacity var(--transition);
-        }
-        
-        .nav-toggle::before {
-            margin-bottom: 5px;
-        }
-        
-        .nav-toggle::after {
-            margin-top: 5px;
-        }
-        
-        .nav-toggle[aria-expanded="true"] span {
-            opacity: 0;
-        }
-        
-        .nav-toggle[aria-expanded="true"]::before {
-            transform: translateY(7px) rotate(45deg);
-        }
-        
-        .nav-toggle[aria-expanded="true"]::after {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            border: none;
-            border-radius: var(--radius-pill);
-            padding: 14px 24px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition), border-color var(--transition);
-        }
-        
-        .btn:hover,
-        .btn:focus-visible {
-            transform: translateY(-2px);
-        }
-        
-        .btn-primary {
-            color: var(--white);
-            background: linear-gradient(135deg, var(--coral-500), var(--coral-400));
-            box-shadow: 0 16px 28px rgba(255, 107, 91, 0.25);
-        }
-        
-        .btn-ghost {
-            color: var(--indigo-800);
-            background: rgba(255, 255, 255, 0.32);
-            border: 1px solid rgba(30, 42, 62, 0.12);
-            box-shadow: none;
-        }
-        
-        .btn-secondary {
-            color: var(--indigo-800);
-            background: rgba(255, 255, 255, 0.72);
-            border: 1px solid rgba(30, 42, 62, 0.12);
-            box-shadow: 0 12px 26px rgba(22, 34, 51, 0.08);
         }
         
         .btn-outline {
-            color: var(--teal-500);
-            background: rgba(47, 143, 125, 0.08);
-            border: 1px solid rgba(47, 143, 125, 0.18);
-            box-shadow: 0 12px 24px rgba(47, 143, 125, 0.12);
-        }
-        
-        .nav-menu-actions,
-        .mobile-auth-actions {
-            display: none;
-        }
-        
-        .hero-inline-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 14px;
-            font-size: 0.94rem;
-            font-weight: 800;
-        }
-        
-        .hero-inline-links a {
-            color: var(--indigo-800);
-            text-decoration: underline;
-            text-decoration-color: rgba(47, 143, 125, 0.35);
-            text-underline-offset: 4px;
-        }
-        
-        .hero {
-            position: relative;
-            padding: 54px 0 34px;
-        }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-            gap: 34px;
-            align-items: stretch;
-        }
-        
-        .hero-copy {
-            position: relative;
-            padding: 22px 0 12px;
-            animation: rise 700ms ease both;
-        }
-        
-        .hero-copy h1 {
-            margin: 20px 0 18px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: clamp(2.8rem, 6vw, 5.15rem);
-            line-height: 0.98;
-            letter-spacing: -0.065em;
-            color: var(--indigo-900);
-            max-width: 720px;
-        }
-        
-        .hero-copy h1 span {
-            display: block;
-            color: transparent;
-            background: linear-gradient(135deg, var(--coral-500), var(--teal-500));
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        
-        .hero-copy p {
-            max-width: 660px;
-            margin: 0 0 28px;
-            font-size: 1.12rem;
-            color: var(--text-soft);
-        }
-        
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 28px;
-        }
-        
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-        }
-        
-        .stat-chip {
-            padding: 18px 18px 16px;
-            border-radius: 22px;
-            background: rgba(255, 255, 255, 0.78);
-            border: 1px solid rgba(30, 42, 62, 0.08);
-            box-shadow: var(--shadow-soft);
-        }
-        
-        .stat-chip strong {
-            display: block;
-            margin-bottom: 4px;
-            font-size: 1.38rem;
-            color: var(--indigo-900);
-        }
-        
-        .stat-chip span {
-            display: block;
-            color: var(--text-soft);
-            font-size: 0.92rem;
-        }
-        
-        .hero-panel {
-            position: relative;
-            display: grid;
-            gap: 18px;
-            padding: 28px;
-            border-radius: var(--radius-xl);
-            background: radial-gradient(circle at top right, rgba(255, 139, 112, 0.16), transparent 28%), linear-gradient(180deg, rgba(22, 34, 51, 0.98), rgba(30, 42, 62, 0.96));
-            color: var(--white);
-            box-shadow: var(--shadow-strong);
-            overflow: hidden;
-            animation: rise 850ms ease both;
-        }
-        
-        .hero-panel::after {
-            content: "";
-            position: absolute;
-            inset: auto -40px -56px auto;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(95, 181, 160, 0.38), transparent 68%);
-            pointer-events: none;
-        }
-        
-        .panel-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        
-        .panel-top h2 {
-            margin: 0 0 8px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: 1.45rem;
-            line-height: 1.2;
-            letter-spacing: -0.04em;
-        }
-        
-        .panel-top p {
-            margin: 0;
-            color: rgba(255, 255, 255, 0.72);
-            font-size: 0.95rem;
-        }
-        
-        .signal-pill {
+            background: transparent;
+            border: 1.5px solid rgba(30, 42, 62, 0.25);
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--deep-indigo);
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 14px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: #d6fff1;
-            font-size: 0.84rem;
-            font-weight: 800;
-            white-space: nowrap;
         }
         
-        .signal-pill::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #9af2c5;
-            box-shadow: 0 0 0 6px rgba(154, 242, 197, 0.12);
+        .btn-outline:hover {
+            border-color: var(--deep-indigo);
+            background: rgba(30, 42, 62, 0.02);
         }
         
-        .match-form {
-            display: grid;
-            gap: 14px;
-        }
-        
-        .field {
-            display: grid;
-            gap: 8px;
-        }
-        
-        .field label {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.72);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        
-        .field select,
-        .field input {
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            padding: 15px 16px;
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.08);
-            outline: none;
-        }
-        
-        .field select option {
-            color: var(--indigo-900);
-        }
-        
-        .hint-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .hint-row span {
-            padding: 8px 12px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.08);
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.84);
-        }
-        
-        .match-result {
-            position: relative;
-            display: grid;
-            gap: 10px;
-            padding: 20px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-        
-        .result-score {
+        .btn-solid {
+            background: var(--vibrant-coral);
+            border: none;
+            padding: 8px 26px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition-base);
+            box-shadow: 0 2px 8px rgba(255, 107, 91, 0.25);
+            text-decoration: none;
             display: inline-flex;
+            align-items: center;
+        }
+        
+        .btn-solid:hover {
+            transform: translateY(-1px);
+            background: #ff5a48;
+            box-shadow: 0 8px 18px rgba(255, 107, 91, 0.3);
+        }
+        /* Preply-style Hero Section */
+        
+        .preply-hero {
+            background: var(--warm-sand);
+            padding: 48px 0 64px;
+        }
+        
+        .hero-flex {
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: fit-content;
-            padding: 8px 12px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 107, 91, 0.16);
-            color: #ffd4cd;
-            font-size: 0.82rem;
-            font-weight: 800;
+            gap: 32px;
         }
         
-        .match-result h3 {
-            margin: 0;
-            font-size: 1.26rem;
-            line-height: 1.2;
-        }
-        
-        .match-result p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.72);
-        }
-        
-        .result-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .result-tags span {
-            padding: 8px 12px;
-            border-radius: var(--radius-pill);
-            background: rgba(95, 181, 160, 0.16);
-            color: #d2fff2;
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-        
-        .result-link {
-            margin-top: 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 800;
-            color: #fff2d0;
-        }
-        
-        .trust-rail {
-            margin-top: 26px;
-            padding: 22px;
-            border-radius: 28px;
-            background: rgba(255, 255, 255, 0.84);
-            border: 1px solid rgba(30, 42, 62, 0.08);
-            box-shadow: var(--shadow-soft);
-        }
-        
-        .trust-head {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 18px;
-        }
-        
-        .trust-head h3 {
-            margin: 0;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: 1.08rem;
-            letter-spacing: -0.03em;
-            color: var(--indigo-900);
-        }
-        
-        .trust-head p {
-            margin: 0;
-            color: var(--text-soft);
-            font-size: 0.95rem;
-        }
-        
-        .trust-logos {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 12px;
-        }
-        
-        .logo-card {
-            display: grid;
-            place-items: center;
-            gap: 10px;
-            min-height: 118px;
-            padding: 18px;
-            border-radius: 20px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(247, 232, 215, 0.72));
-            border: 1px solid rgba(30, 42, 62, 0.08);
+        .hero-heading-wrapper {
             text-align: center;
         }
         
-        .logo-card img {
-            max-height: 42px;
-            width: auto;
-            object-fit: contain;
+        .hero-main-title {
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--deep-indigo), #2c4058);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
         
-        .logo-card strong {
-            font-size: 0.9rem;
-            color: var(--indigo-800);
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--deep-indigo);
+            opacity: 0.8;
         }
         
-        .sections {
-            padding-bottom: 84px;
+        .hero-image-container {
+            max-width: 700px;
+            margin: 16px 0;
         }
         
-        section {
-            padding: 54px 0;
-            scroll-margin-top: 96px;
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 32px;
+            box-shadow: var(--shadow-md);
         }
         
-        .narrative {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
+        .hero-cta-wrapper {
+            margin-top: 16px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
-        .story-card {
-            padding: 28px;
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(30, 42, 62, 0.08);
-            box-shadow: var(--shadow-soft);
-        }
-        
-        .story-card.alt {
-            background: linear-gradient(160deg, rgba(22, 34, 51, 0.98), rgba(47, 143, 125, 0.96));
-            color: var(--white);
-        }
-        
-        .story-card .tag {
+        .hero-btn {
+            background: var(--vibrant-coral);
+            border: none;
+            padding: 16px 42px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition-base);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 18px;
-            padding: 8px 12px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 107, 91, 0.12);
-            color: var(--coral-500);
-            font-size: 0.82rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .story-card.alt .tag {
-            background: rgba(255, 255, 255, 0.12);
-            color: #fce7d6;
-        }
-        
-        .story-card h3 {
-            margin: 0 0 12px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            font-size: 1.65rem;
-            line-height: 1.12;
-            letter-spacing: -0.04em;
-        }
-        
-        .story-card p {
-            margin: 0 0 18px;
-            color: inherit;
-            opacity: 0.9;
-        }
-        
-        .bullets {
-            display: grid;
             gap: 12px;
+            box-shadow: 0 8px 18px rgba(255, 107, 91, 0.3);
+            text-decoration: none;
         }
         
-        .bullets div {
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            background: #ff4f3c;
+            box-shadow: 0 12px 28px rgba(255, 107, 91, 0.4);
+        }
+        
+        .hero-btn-secondary {
+            background: transparent;
+            border: 2px solid var(--seafoam-teal);
+            padding: 14px 38px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--seafoam-teal);
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .hero-btn-secondary:hover {
+            background: var(--seafoam-teal);
+            color: white;
+            transform: translateY(-2px);
+        }
+        /* Trust Strip */
+        
+        .trust-strip {
+            background: var(--pure-white);
+            border-radius: 80px;
+            padding: 12px 24px;
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            color: inherit;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin: 16px 0 40px;
+            box-shadow: var(--shadow-xs);
+            font-weight: 500;
+        }
+        /* Section Styles */
+        
+        section {
+            padding: 80px 0;
         }
         
-        .bullet-mark {
-            flex: none;
-            width: 28px;
-            height: 28px;
-            display: grid;
-            place-items: center;
-            border-radius: 10px;
-            font-size: 0.78rem;
+        .section-badge {
+            background: rgba(47, 143, 125, 0.1);
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--seafoam-teal);
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-size: 2.3rem;
             font-weight: 800;
-            color: var(--white);
-            background: linear-gradient(135deg, var(--coral-500), var(--teal-500));
-            box-shadow: 0 10px 20px rgba(47, 143, 125, 0.16);
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
         }
         
-        .market-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-        }
-        
-        .market-card,
-        .feature-card,
-        .journey-card,
-        .proof-card,
-        .faq-item,
-        .cta-panel {
-            border-radius: var(--radius-lg);
-            background: rgba(255, 255, 255, 0.84);
-            border: 1px solid rgba(30, 42, 62, 0.08);
-            box-shadow: var(--shadow-soft);
-        }
-        
-        .market-card {
-            position: relative;
-            overflow: hidden;
-            padding: 28px;
-        }
-        
-        .market-card::after {
-            content: "";
-            position: absolute;
-            inset: auto -28px -34px auto;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 107, 91, 0.14), transparent 70%);
-        }
-        
-        .market-card h3,
-        .feature-card h3,
-        .journey-card h3,
-        .proof-card h3,
-        .cta-panel h3 {
-            margin: 0 0 10px;
-            font-family: "Sora", "Trebuchet MS", sans-serif;
-            line-height: 1.15;
-            letter-spacing: -0.04em;
-            color: var(--indigo-900);
-        }
-        
-        .market-card p,
-        .feature-card p,
-        .journey-card p,
-        .proof-card p,
-        .faq-answer,
-        .cta-panel p {
-            margin: 0;
-            color: var(--text-soft);
-        }
-        
-        .accent-badge {
-            width: 54px;
-            height: 54px;
-            display: grid;
-            place-items: center;
-            margin-bottom: 18px;
-            border-radius: 18px;
-            color: var(--white);
-            font-size: 0.95rem;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            background: linear-gradient(135deg, var(--indigo-800), var(--coral-500));
-            box-shadow: 0 14px 26px rgba(30, 42, 62, 0.16);
-        }
-        
-        .market-meta {
-            margin-top: 18px;
+        .grid-2col {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 48px;
+            align-items: stretch;
         }
         
-        .market-meta span {
-            padding: 8px 12px;
-            border-radius: var(--radius-pill);
-            background: rgba(47, 143, 125, 0.1);
-            color: var(--teal-500);
-            font-size: 0.82rem;
-            font-weight: 800;
+        .card-problem,
+        .card-solution {
+            flex: 1;
+            background: var(--pure-white);
+            border-radius: var(--border-radius-lg);
+            padding: 40px 32px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
         }
         
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
+        .card-problem {
+            border-bottom: 4px solid #ffb5ab;
+        }
+        
+        .card-solution {
+            border-bottom: 4px solid var(--seafoam-teal);
+        }
+        
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 32px;
         }
         
         .feature-card {
-            padding: 28px;
-            position: relative;
-            overflow: hidden;
+            background: var(--pure-white);
+            border-radius: var(--border-radius-md);
+            padding: 32px 24px;
+            flex: 1;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
         }
         
-        .feature-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(47, 143, 125, 0.04));
-            pointer-events: none;
+        .step-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            margin-top: 32px;
         }
         
-        .feature-card .label {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-            padding: 8px 12px;
-            border-radius: var(--radius-pill);
-            background: rgba(22, 34, 51, 0.05);
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--indigo-700);
+        .step-card {
+            background: var(--pure-white);
+            border-radius: 28px;
+            padding: 32px 24px;
+            flex: 1;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
         }
         
-        .feature-card ul {
-            margin: 16px 0 0;
-            padding-left: 18px;
-            color: var(--text-soft);
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
         }
         
-        .feature-card li+li {
-            margin-top: 8px;
-        }
-        
-        .journey {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 18px;
-        }
-        
-        .journey-card {
-            padding: 26px;
-        }
-        
-        .step-no {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            margin-bottom: 18px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--coral-500), var(--coral-400));
-            color: var(--white);
-            font-weight: 800;
-            box-shadow: 0 12px 20px rgba(255, 107, 91, 0.22);
-        }
-        
-        .proof-grid {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 18px;
-        }
-        
-        .proof-card {
-            padding: 30px;
-        }
-        
-        .proof-card.dark {
-            background: linear-gradient(180deg, rgba(22, 34, 51, 0.98), rgba(30, 42, 62, 0.96));
-            color: var(--white);
-        }
-        
-        .proof-card.dark h3,
-        .proof-card.dark p,
-        .proof-card.dark .quote,
-        .proof-card.dark .proof-stat strong,
-        .proof-card.dark .proof-stat span {
-            color: inherit;
-        }
-        
-        .proof-stack {
-            display: grid;
-            gap: 18px;
-        }
-        
-        .quote {
-            font-size: 1.08rem;
-            color: var(--text-main);
-        }
-        
-        .quote strong {
-            display: block;
-            margin-top: 16px;
-            color: var(--indigo-900);
-        }
-        
-        .proof-stats {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 14px;
-            margin-top: 18px;
-        }
-        
-        .proof-stat {
-            padding: 18px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        .proof-stat strong {
-            display: block;
-            font-size: 1.3rem;
-            margin-bottom: 6px;
-        }
-        
-        .proof-stat span {
-            display: block;
-            color: rgba(255, 255, 255, 0.72);
-            font-size: 0.92rem;
-        }
-        
-        .faq-list {
-            display: grid;
-            gap: 14px;
+        .testimonial-card {
+            background: var(--pure-white);
+            border-radius: 24px;
+            padding: 32px;
+            flex: 1;
+            box-shadow: var(--shadow-sm);
         }
         
         .faq-item {
-            padding: 0;
-            overflow: hidden;
+            background: var(--pure-white);
+            border-radius: 20px;
+            padding: 20px 28px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-xs);
         }
         
-        .faq-question {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
-            padding: 22px 24px;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            text-align: left;
-            font-weight: 800;
-            color: var(--indigo-900);
-        }
-        
-        .faq-question span:last-child {
-            flex: none;
-            width: 28px;
-            height: 28px;
-            display: grid;
-            place-items: center;
-            border-radius: 10px;
-            background: rgba(47, 143, 125, 0.1);
-            color: var(--teal-500);
-            transition: transform var(--transition), background var(--transition);
-        }
-        
-        .faq-item.open .faq-question span:last-child {
-            transform: rotate(45deg);
-            background: rgba(255, 107, 91, 0.12);
-            color: var(--coral-500);
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 24px;
-            transition: max-height 280ms ease, padding 280ms ease;
-        }
-        
-        .faq-item.open .faq-answer {
-            max-height: 220px;
-            padding: 0 24px 22px;
-        }
-        
-        .cta-panel {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 20px;
-            padding: 28px;
-            background: radial-gradient(circle at top right, rgba(255, 139, 112, 0.18), transparent 28%), linear-gradient(135deg, rgba(22, 34, 51, 0.98), rgba(47, 143, 125, 0.96));
-            color: var(--white);
-            overflow: hidden;
-        }
-        
-        .cta-panel h3,
-        .cta-panel p {
-            color: inherit;
-        }
-        
-        .cta-list {
-            display: grid;
-            gap: 10px;
-            align-content: start;
-        }
-        
-        .cta-list div {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            color: rgba(255, 255, 255, 0.84);
-        }
-        
-        .cta-list div::before {
-            content: "";
-            flex: none;
-            width: 10px;
-            height: 10px;
-            margin-top: 8px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ffd1c6, #9af2c5);
-        }
-        
-        .cta-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
+        .founder-section {
+            background: var(--deep-indigo);
+            border-radius: 40px;
+            padding: 56px 48px;
+            text-align: center;
+            color: var(--warm-sand);
         }
         
         .footer {
-            padding: 36px 0 48px;
+            background: #111a26;
+            color: #b9c7d9;
+            padding: 56px 0 32px;
+            margin-top: 16px;
         }
+        /* Scroll to top button */
         
-        .footer-shell {
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--vibrant-coral);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            padding-top: 28px;
-            border-top: 1px solid rgba(30, 42, 62, 0.08);
-            color: var(--text-soft);
-            font-size: 0.94rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            font-weight: 700;
-        }
-        
-        [data-reveal] {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        body.reveal-ready [data-reveal] {
+            justify-content: center;
+            cursor: pointer;
             opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 600ms ease, transform 600ms ease;
+            visibility: hidden;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-md);
+            z-index: 99;
         }
         
-        body.reveal-ready [data-reveal].is-visible {
+        .scroll-top.show {
             opacity: 1;
-            transform: translateY(0);
+            visibility: visible;
         }
         
-        @keyframes rise {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .scroll-top:hover {
+            transform: translateY(-3px);
+            background: #ff5a48;
         }
         
-        @media (max-width: 1080px) {
-            .hero-grid,
-            .proof-grid,
-            .cta-panel {
-                grid-template-columns: 1fr;
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
             }
-            .market-grid,
-            .feature-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+            body {
+                padding-top: 130px;
             }
-            .journey {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+            .hero-main-title {
+                font-size: 2.3rem;
             }
-            .hero-copy h1 {
-                max-width: none;
+            .hero-subtitle {
+                font-size: 1rem;
             }
-        }
-        
-        @media (max-width: 860px) {
-            .site-header {
-                padding: 14px 0;
+            .hero-btn,
+            .hero-btn-secondary {
+                padding: 12px 28px;
+                font-size: 1rem;
             }
-            .nav-toggle {
-                display: inline-grid;
-                place-items: center;
+            .trust-strip {
+                gap: 18px;
+                font-size: 0.8rem;
             }
-            .nav-links,
-            .nav-actions .desktop-only {
+            .hero-cta-wrapper {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-links {
                 display: none;
             }
-            .nav-links.open {
-                position: absolute;
-                top: calc(100% + 10px);
-                left: 20px;
-                right: 20px;
-                display: grid;
-                gap: 12px;
-                padding: 18px;
-                border-radius: 24px;
-                background: rgba(255, 248, 240, 0.96);
-                border: 1px solid rgba(30, 42, 62, 0.08);
-                box-shadow: var(--shadow-soft);
-            }
-            .nav-links.open .nav-menu-actions {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 10px;
-                margin-top: 8px;
-            }
-            .mobile-auth-actions {
-                display: flex;
-                gap: 10px;
-                padding-top: 12px;
-            }
-            .mobile-auth-actions .btn {
-                flex: 1;
-                min-width: 0;
-                padding-inline: 16px;
-            }
-            .hero-stats,
-            .narrative,
-            .trust-logos {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-        
-        @media (max-width: 680px) {
-            .shell {
-                width: min(var(--wrap), calc(100% - 24px));
-            }
-            section {
-                padding: 42px 0;
-            }
-            .hero {
-                padding-top: 36px;
-            }
-            .hero-panel,
-            .story-card,
-            .feature-card,
-            .proof-card,
-            .cta-panel,
-            .market-card,
-            .journey-card {
-                padding: 22px;
-            }
-            .hero-stats,
-            .narrative,
-            .trust-logos,
-            .market-grid,
-            .feature-grid,
-            .journey,
-            .proof-stats {
-                grid-template-columns: 1fr;
-            }
-            .panel-top {
-                flex-direction: column;
-            }
-            .hero-copy h1 {
-                font-size: clamp(2.3rem, 13vw, 3.5rem);
-            }
-            .hero-copy p,
-            .section-heading p {
-                font-size: 0.98rem;
-            }
-            .nav-links.open .nav-menu-actions,
-            .mobile-auth-actions {
-                grid-template-columns: 1fr;
-            }
-            .mobile-auth-actions {
-                display: grid;
+            .nav-flex {
+                justify-content: space-between;
             }
         }
     </style>
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="shell nav-bar">
-            <a class="brand" href="#top" aria-label="EduMatch Zimbabwe home">
-                <span class="brand-mark">EM</span>
-                <span class="brand-text">EduMatch <span>Zimbabwe</span></span>
-            </a>
 
-            <nav class="nav-links" id="siteNav" aria-label="Primary">
-                <a href="#why">Why EduMatch</a>
-                <a href="#marketplace">Marketplace</a>
-                <a href="#modules">Modules</a>
-                <a href="#journey">How It Works</a>
-                <a href="#trust">Payments</a>
+    <!-- FIXED NAVBAR - Does NOT move on scroll -->
+    <div class="navbar">
+        <div class="container nav-flex">
+            <div class="logo">EDUMATCH<span>.zw</span></div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#howitworks">How It Works</a>
+                <a href="#testimonials">Stories</a>
                 <a href="#faq">FAQ</a>
-                <div class="nav-menu-actions">
-                    <a class="btn btn-ghost" href="login.html">Log in</a>
-                    <a class="btn btn-secondary" href="register.html">Sign up</a>
-                    <a class="btn btn-primary" href="match-results.html">Find a Tutor</a>
-                    <a class="btn btn-outline" href="register.html?role=tutor">Become a Tutor</a>
-                </div>
-            </nav>
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-outline">Log in</a>
+                <a href="register.html" class="btn-solid">Sign up</a>
+            </div>
+        </div>
+    </div>
 
-            <div class="nav-actions">
-                <a class="btn btn-ghost desktop-only" href="login.html">Log in</a>
-                <a class="btn btn-secondary desktop-only" href="register.html">Sign up</a>
-                <a class="btn btn-primary desktop-only" href="match-results.html">Find a Tutor</a>
-                <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-controls="siteNav" aria-expanded="false">
-          <span></span>
-        </button>
+    <main>
+        <!-- PREPLY-STYLE HERO SECTION -->
+        <div class="preply-hero">
+            <div class="container">
+                <div class="hero-flex">
+                    <div class="hero-heading-wrapper">
+                        <h1 class="hero-main-title">Master your syllabus with the perfect tutor match</h1>
+                        <h2 class="hero-subtitle">Because real progress takes two — smart matching, real results.</h2>
+                    </div>
+                    <div class="hero-image-container">
+                        <img class="hero-image" src="https://static.preply.com/static/ssr/_next/static/media/hero-progress-takes-two.88c3e90a.png" alt="Progress Takes Two - EduMatch Zimbabwe" width="700" loading="lazy">
+                    </div>
+                    <div class="hero-cta-wrapper">
+                        <a href="register.html?role=student" class="hero-btn"><i class="fas fa-search"></i> Find a Tutor</a>
+                        <a href="register.html?role=tutor" class="hero-btn-secondary"><i class="fas fa-chalkboard-user"></i> Become a Tutor</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="shell mobile-auth-actions">
-            <a class="btn btn-ghost" href="login.html">Log in</a>
-            <a class="btn btn-secondary" href="register.html">Sign up</a>
-        </div>
-    </header>
-
-    <main id="top">
-        <section class="hero">
-            <div class="shell hero-grid">
-                <div class="hero-copy">
-                    <span class="eyebrow">Localized EdTech marketplace for Zimbabwe</span>
-                    <h1>
-                        Match every learner to the
-                        <span>right tutor, right syllabus, right support.</span>
-                    </h1>
-                    <p>
-                        EduMatch Zimbabwe professionalizes tutoring by connecting primary, secondary, and tertiary students with verified subject experts using syllabus fit, course codes, location, and trust-first payments.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a class="btn btn-primary" href="match-results.html">Find a Tutor</a>
-                        <a class="btn btn-outline" href="register.html?role=tutor">Become a Tutor</a>
-                    </div>
-
-                    <div class="hero-inline-links">
-                        <a href="login.html">Log in to your account</a>
-                        <a href="register.html">Sign up as a student or parent</a>
-                    </div>
-
-                    <div class="hero-stats">
-                        <div class="stat-chip">
-                            <strong>ZIMSEC + Cambridge</strong>
-                            <span>Matching logic built around local syllabus realities.</span>
-                        </div>
-                        <div class="stat-chip">
-                            <strong>Escrow via Paynow</strong>
-                            <span>EcoCash, InnBucks, and ZimSwitch-ready checkout trust.</span>
-                        </div>
-                        <div class="stat-chip">
-                            <strong>SMS fallback</strong>
-                            <span>Built for peri-urban and rural learners with unstable data.</span>
-                        </div>
-                    </div>
-                </div>
-
-                <aside class="hero-panel" aria-label="EduMatch smart match demo">
-                    <div class="panel-top">
-                        <div>
-                            <h2>Rule-based smart matching</h2>
-                            <p>Preview how EduMatch adapts to level, syllabus, and academic need.</p>
-                        </div>
-                        <span class="signal-pill">Ready for low bandwidth</span>
-                    </div>
-
-                    <form class="match-form" id="matchForm">
-                        <div class="field">
-                            <label for="levelSelect">Academic level</label>
-                            <select id="levelSelect" name="level">
-                <option value="primary">Primary learner</option>
-                <option value="secondary" selected>Secondary learner</option>
-                <option value="tertiary">Tertiary student</option>
-              </select>
-                        </div>
-
-                        <div class="field">
-                            <label for="syllabusSelect">Syllabus or route</label>
-                            <select id="syllabusSelect" name="syllabus">
-                <option value="zimsec" selected>ZIMSEC pathway</option>
-                <option value="cambridge">Cambridge pathway</option>
-                <option value="course-code">University course code</option>
-              </select>
-                        </div>
-
-                        <div class="field">
-                            <label for="needInput">Subject, paper, or course code</label>
-                            <input id="needInput" name="need" type="text" value="Mathematics Paper 2" placeholder="Example: Accounting, Biology, HCS 115">
-                        </div>
-                    </form>
-
-                    <div class="hint-row" aria-label="Common matching filters">
-                        <span>Verified tutors</span>
-                        <span>Location-aware</span>
-                        <span>Parent-approved</span>
-                        <span>Session reports</span>
-                    </div>
-
-                    <article class="match-result" id="matchResult">
-                        <span class="result-score" id="resultScore">Suggested fit: 96%</span>
-                        <h3 id="resultTitle">Secondary exam rescue with a ZIMSEC specialist</h3>
-                        <p id="resultSummary">
-                            Filter for syllabus-aligned tutors, practical revision support, and a parent-visible progress trail.
-                        </p>
-                        <div class="result-tags" id="resultTags">
-                            <span>O-Level prep</span>
-                            <span>Progress checkpoints</span>
-                            <span>Weekend slots</span>
-                        </div>
-                        <a class="result-link" id="resultLink" href="match-results.html">Open match results preview -></a>
-                    </article>
-                </aside>
+        <!-- Trust strip with local payments -->
+        <div class="container">
+            <div class="trust-strip">
+                <span><i class="fab fa-cc-visa"></i> Paynow Escrow</span>
+                <span><i class="fas fa-mobile-alt"></i> EcoCash</span>
+                <span><i class="fas fa-coins"></i> InnBucks</span>
+                <span><i class="fas fa-exchange-alt"></i> ZimSwitch</span>
+                <span><i class="fas fa-lock"></i> Secure Payments · Tutor paid after lesson</span>
             </div>
+        </div>
 
-            <div class="shell">
-                <div class="trust-rail" id="trust" data-reveal>
-                    <div class="trust-head">
-                        <div>
-                            <h3>Localized trust infrastructure</h3>
-                            <p>Commission-based escrow through Paynow with the payment options families already use.</p>
-                        </div>
-                        <span class="eyebrow">Release funds after lesson confirmation</span>
+        <!-- Problem vs Solution -->
+        <section id="features">
+            <div class="container grid-2col">
+                <div class="card-problem"><i class="fas fa-times-circle" style="color: #FF6B5B; font-size: 2rem; margin-bottom: 16px; display: inline-block;"></i><span class="section-badge" style="background:#ffe3df;">The Old Way</span>
+                    <h2 style="font-size: 1.7rem; margin: 12px 0;">Unreliable WhatsApp tutors & wasted potential</h2>
+                    <p>Inconsistent rates, unvetted teachers, zero progress tracking and safety concerns — the informal sector leaves students vulnerable.</p>
+                </div>
+                <div class="card-solution"><i class="fas fa-check-circle" style="color: var(--seafoam-teal); font-size: 2rem; margin-bottom: 16px;"></i><span class="section-badge" style="background: #e0f0ec;">The EduMatch Way</span>
+                    <h2 style="font-size: 1.7rem; margin: 12px 0;">Verified pros + syllabus alignment + escrow</h2>
+                    <p>Background-checked tutors, Paynow escrow, automated progress reports, and real-time syllabus tracking for ZIMSEC/Cambridge/University.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section style="padding-top: 0;">
+            <div class="container">
+                <div class="section-badge">Tailored ecosystem</div>
+                <h2 class="section-title">Designed for every learner & family</h2>
+                <div class="features-grid">
+                    <div class="feature-card"><i class="fas fa-eye" style="font-size: 2.2rem; color: var(--seafoam-teal);"></i>
+                        <h3 style="margin: 16px 0 8px;">Parent Oversight</h3>
+                        <p>Monitor sessions in real-time, authorize payments, receive weekly progress reports via SMS/email.</p>
                     </div>
-
-                    <div class="trust-logos">
-                        <div class="logo-card">
-                            <img src="payment logos/paynow.png" alt="Paynow logo">
-                            <strong>Paynow escrow</strong>
-                        </div>
-                        <div class="logo-card">
-                            <img src="payment logos/Ecocash-Logo.png" alt="EcoCash logo">
-                            <strong>EcoCash support</strong>
-                        </div>
-                        <div class="logo-card">
-                            <img src="payment logos/innBucks.png" alt="InnBucks logo">
-                            <strong>InnBucks support</strong>
-                        </div>
-                        <div class="logo-card">
-                            <img src="payment logos/images.jpg" alt="ZimSwitch logo">
-                            <strong>ZimSwitch support</strong>
-                        </div>
+                    <div class="feature-card"><i class="fas fa-user-friends" style="font-size: 2.2rem; color: var(--seafoam-teal);"></i>
+                        <h3 style="margin: 16px 0 8px;">Study Pods™</h3>
+                        <p>Form groups of 3–5 students, split top-tier tutor costs automatically — collaborative learning made smart.</p>
+                    </div>
+                    <div class="feature-card"><i class="fas fa-tower-cell" style="font-size: 2.2rem; color: var(--seafoam-teal);"></i>
+                        <h3 style="margin: 16px 0 8px;">Rural Accessibility</h3>
+                        <p>Low-bandwidth mode + SMS fallback. Receive lesson alerts and chat with your tutor even without stable internet.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="sections">
-            <section id="why">
-                <div class="shell">
-                    <div class="section-heading" data-reveal>
-                        <span class="eyebrow">The core identity</span>
-                        <h2>Not just a tutor directory. A structured marketplace built for Zimbabwean learning outcomes.</h2>
-                        <p>
-                            EduMatch bridges the gap between informal tutoring and accountable academic support by combining tutor verification, intelligent matching, and progress visibility for families, learners, and tutors.
-                        </p>
+        <!-- Process 1-2-3 -->
+        <section id="howitworks" style="background: #fcf6ef;">
+            <div class="container">
+                <div class="section-badge">How it works</div>
+                <h2 class="section-title">From match to mastery in three steps</h2>
+                <div class="step-grid">
+                    <div class="step-card">
+                        <div style="background: var(--vibrant-coral); width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 100px; color: white; font-weight: 800; font-size: 1.3rem; margin-bottom: 20px;">1</div>
+                        <h3>Intelligent Match</h3>
+                        <p>Enter level, subject & syllabus — our rule-based engine finds your ideal tutor.</p>
                     </div>
-
-                    <div class="narrative">
-                        <article class="story-card" data-reveal>
-                            <span class="tag">The old way</span>
-                            <h3>Students hunt for tutors through scattered referrals and unverified chats.</h3>
-                            <p>
-                                That means inconsistent pricing, unclear expertise, limited accountability, and no reliable way to see whether a learner is actually progressing toward exam requirements.
-                            </p>
-                            <div class="bullets">
-                                <div><span class="bullet-mark">01</span><span>No structured match between student need and tutor expertise.</span></div>
-                                <div><span class="bullet-mark">02</span><span>Parents struggle to monitor sessions, quality, and payment release.</span></div>
-                                <div><span class="bullet-mark">03</span><span>Unstable connectivity makes digital tutoring unreliable outside major urban centers.</span></div>
-                            </div>
-                        </article>
-
-                        <article class="story-card alt" data-reveal>
-                            <span class="tag">The EduMatch way</span>
-                            <h3>Every session is built around fit, trust, oversight, and local accessibility.</h3>
-                            <p>
-                                The platform understands ZIMSEC versus Cambridge pathways, tertiary course codes, and the real constraints of data cost, payment trust, and guardian involvement.
-                            </p>
-                            <div class="bullets">
-                                <div><span class="bullet-mark">AI</span><span>Rule-based matching by syllabus, subject, level, and location.</span></div>
-                                <div><span class="bullet-mark">TR</span><span>Escrow-first payments with local rails learners already recognize.</span></div>
-                                <div><span class="bullet-mark">SMS</span><span>Low-bandwidth and SMS fallback for lesson continuity and reminders.</span></div>
-                            </div>
-                        </article>
+                    <div class="step-card">
+                        <div style="background: var(--vibrant-coral); width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 100px; color: white; font-weight: 800; font-size: 1.3rem; margin-bottom: 20px;">2</div>
+                        <h3>Verify & Connect</h3>
+                        <p>Review tutor's verified credentials, student pass rates, and book a trial session.</p>
+                    </div>
+                    <div class="step-card">
+                        <div style="background: var(--vibrant-coral); width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 100px; color: white; font-weight: 800; font-size: 1.3rem; margin-bottom: 20px;">3</div>
+                        <h3>Learn & Track</h3>
+                        <p>Interactive lessons + syllabus tracker automatically maps progress to exam requirements.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="marketplace">
-                <div class="shell">
-                    <div class="section-heading" data-reveal>
-                        <span class="eyebrow">Dual-sided marketplace</span>
-                        <h2>One platform, multiple academic journeys.</h2>
-                        <p>
-                            EduMatch serves learners across the full pipeline while giving tutors a more professional way to package expertise, availability, and verified teaching outcomes.
-                        </p>
-                    </div>
-
-                    <div class="market-grid">
-                        <article class="market-card" data-reveal>
-                            <div class="accent-badge">P</div>
-                            <h3>Primary support</h3>
-                            <p>
-                                Help younger learners build strong foundations through trusted tutors, guardian visibility, and simplified booking.
-                            </p>
-                            <div class="market-meta">
-                                <span>Foundational literacy</span>
-                                <span>Numeracy support</span>
-                                <span>Guardian alerts</span>
-                            </div>
-                        </article>
-
-                        <article class="market-card" data-reveal>
-                            <div class="accent-badge">S</div>
-                            <h3>Secondary mastery</h3>
-                            <p>
-                                Match O-Level and A-Level learners to tutors who understand ZIMSEC or Cambridge expectations, paper styles, and revision pacing.
-                            </p>
-                            <div class="market-meta">
-                                <span>ZIMSEC filters</span>
-                                <span>Cambridge filters</span>
-                                <span>Exam readiness</span>
-                            </div>
-                        </article>
-
-                        <article class="market-card" data-reveal>
-                            <div class="accent-badge">T</div>
-                            <h3>Tertiary rescue</h3>
-                            <p>
-                                University students can search by course code, faculty need, or assignment pressure to find subject-matched specialists fast.
-                            </p>
-                            <div class="market-meta">
-                                <span>Course-code search</span>
-                                <span>Module clinics</span>
-                                <span>Lab and exam prep</span>
-                            </div>
-                        </article>
-                    </div>
+        <!-- Testimonials -->
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-badge">Success stories</div>
+                <h2 class="section-title">Trusted by learners & parents across Zimbabwe</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card"><i class="fas fa-quote-left" style="color: var(--seafoam-teal); font-size: 1.5rem; opacity: 0.7;"></i>
+                        <p style="margin: 16px 0;">“EduMatch matched me with a lecturer who understood my BSIT course modules. Finally, specific syllabus help!”</p><strong>— Tinashe M., Chinhoyi University</strong></div>
+                    <div class="testimonial-card"><i class="fas fa-quote-left" style="color: var(--seafoam-teal); font-size: 1.5rem; opacity: 0.7;"></i>
+                        <p style="margin: 16px 0;">“The Parent Oversight dashboard gave me peace of mind. I can track my daughter's Grade 7 progress live.”</p><strong>— Mrs. Sibanda, Harare</strong></div>
+                    <div class="testimonial-card"><i class="fas fa-users" style="color: var(--seafoam-teal); font-size: 1.5rem;"></i>
+                        <p style="margin: 16px 0;">“Study Pods cut my exam prep cost by 60%! Sharing a top tutor with friends = genius.”</p><strong>— Anesu F., Bulawayo</strong></div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="modules">
-                <div class="shell">
-                    <div class="section-heading" data-reveal>
-                        <span class="eyebrow">Unique functional modules</span>
-                        <h2>Every differentiator lives in the product, not just in the pitch.</h2>
-                        <p>
-                            These modules turn EduMatch into a full tutoring ecosystem instead of a simple listing site.
-                        </p>
-                    </div>
-
-                    <div class="feature-grid">
-                        <article class="feature-card" data-reveal>
-                            <span class="label">Intelligent matching</span>
-                            <h3>Rule-based tutor recommendations</h3>
-                            <p>Students get matched according to syllabus type, level, location, and precise academic need.</p>
-                            <ul>
-                                <li>ZIMSEC versus Cambridge separation for more accurate tutor fit.</li>
-                                <li>Tertiary routing by module name or course code.</li>
-                                <li>Better quality control than open-directory browsing.</li>
-                            </ul>
-                        </article>
-
-                        <article class="feature-card" data-reveal>
-                            <span class="label">Study Pods</span>
-                            <h3>Shared sessions for 3-5 learners</h3>
-                            <p>Students can learn together, reduce cost pressure, and automatically split tutoring fees.</p>
-                            <ul>
-                                <li>Ideal for revision groups, neighborhoods, and classmates.</li>
-                                <li>Creates a more affordable route to premium tutors.</li>
-                                <li>Encourages social accountability and regular attendance.</li>
-                            </ul>
-                        </article>
-
-                        <article class="feature-card" data-reveal>
-                            <span class="label">Parent module</span>
-                            <h3>Guardian monitoring and approval</h3>
-                            <p>Parents or guardians can track sessions, progress, and payment release in real time.</p>
-                            <ul>
-                                <li>Live oversight for younger learners.</li>
-                                <li>Progress snapshots after tutoring milestones.</li>
-                                <li>More trust between family, tutor, and platform.</li>
-                            </ul>
-                        </article>
-
-                        <article class="feature-card" data-reveal>
-                            <span class="label">Low bandwidth</span>
-                            <h3>SMS fallback and lite access</h3>
-                            <p>EduMatch is designed for rural and peri-urban use where internet quality is inconsistent.</p>
-                            <ul>
-                                <li>Lesson reminders and updates via SMS.</li>
-                                <li>Reduced-friction workflows for lower data usage.</li>
-                                <li>Better continuity for learners outside major cities.</li>
-                            </ul>
-                        </article>
-
-                        <article class="feature-card" data-reveal>
-                            <span class="label">Syllabus tracker</span>
-                            <h3>Digitized learning progress against official requirements</h3>
-                            <p>Tutors and students can see how teaching maps to national and institutional syllabus goals.</p>
-                            <ul>
-                                <li>Track what has been covered and what is still pending.</li>
-                                <li>Useful for exam preparation and guardian reporting.</li>
-                                <li>Keeps tutoring aligned with real outcomes.</li>
-                            </ul>
-                        </article>
-
-                        <article class="feature-card" data-reveal>
-                            <span class="label">Gamification</span>
-                            <h3>Streaks, badges, and retention loops</h3>
-                            <p>Student motivation is reinforced through visible progress markers that reward consistency.</p>
-                            <ul>
-                                <li>Attendance streaks for session discipline.</li>
-                                <li>Achievement badges for progress milestones.</li>
-                                <li>Supports stronger long-term engagement.</li>
-                            </ul>
-                        </article>
-                    </div>
+        <!-- FAQ -->
+        <section id="faq" style="background: #fcf6ef;">
+            <div class="container">
+                <div class="section-badge">Addressing your concerns</div>
+                <h2 class="section-title">Frequently asked questions</h2>
+                <div class="faq-item"><strong><i class="fas fa-money-bill-wave" style="color: var(--seafoam-teal); margin-right: 12px;"></i> How do I pay?</strong><br>We support EcoCash, InnBucks, and ZimSwitch via Paynow escrow. Your payment is released only after you confirm
+                    the lesson.</div>
+                <div class="faq-item"><strong><i class="fas fa-id-card" style="color: var(--seafoam-teal); margin-right: 12px;"></i> Are tutors truly vetted?</strong><br>Yes — every ID and academic certificate is manually verified before a tutor can teach on EduMatch.</div>
+                <div class="faq-item"><strong><i class="fas fa-wifi-slash" style="color: var(--seafoam-teal); margin-right: 12px;"></i> Poor internet connection?</strong><br>Our Lite Mode + SMS fallback system ensures you never miss lesson updates and can chat offline.</div>
+                <div class="faq-item"><strong><i class="fas fa-graduation-cap" style="color: var(--seafoam-teal); margin-right: 12px;"></i> Can I find university tutors by course code?</strong><br>Absolutely. Search by course code (e.g., CSIT 203) and get matched with tertiary
+                    specialists.
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="journey">
-                <div class="shell">
-                    <div class="section-heading" data-reveal>
-                        <span class="eyebrow">How it works</span>
-                        <h2>A clear journey from request to results.</h2>
-                        <p>
-                            The landing page needs to communicate flow as clearly as value. This sequence makes the platform feel understandable and trustworthy.
-                        </p>
-                    </div>
-
-                    <div class="journey">
-                        <article class="journey-card" data-reveal>
-                            <span class="step-no">1</span>
-                            <h3>Describe the learner</h3>
-                            <p>Choose academic level, syllabus route, subject need, and whether the learner needs online or nearby support.</p>
-                        </article>
-
-                        <article class="journey-card" data-reveal>
-                            <span class="step-no">2</span>
-                            <h3>Match with verified tutors</h3>
-                            <p>EduMatch scores relevant tutors using syllabus fit, expertise, and practical availability filters.</p>
-                        </article>
-
-                        <article class="journey-card" data-reveal>
-                            <span class="step-no">3</span>
-                            <h3>Book through trusted payments</h3>
-                            <p>Families fund sessions with local rails through escrow so tutors are paid after lesson confirmation.</p>
-                        </article>
-
-                        <article class="journey-card" data-reveal>
-                            <span class="step-no">4</span>
-                            <h3>Track progress and retention</h3>
-                            <p>Use guardian oversight, syllabus tracking, reports, and motivation loops to keep learning on course.</p>
-                        </article>
-                    </div>
+        <!-- Founder's Note -->
+        <section>
+            <div class="container">
+                <div class="founder-section">
+                    <i class="fas fa-quote-right" style="font-size: 2.2rem; opacity: 0.5; margin-bottom: 16px; display: inline-block;"></i>
+                    <h2 style="font-size: 2rem; font-weight: 700;">Built by Students, for Students</h2>
+                    <p style="max-width: 720px; margin: 20px auto; font-size: 1.05rem;">We are <strong>Group 6 from Chinhoyi University of Technology (CUT)</strong>. EduMatch was born from our own struggle — the lack of trustworthy, structured tutoring. Our mission is to digitize the Zimbabwean classroom and bridge the
+                        digital divide. Every feature is crafted for local realities, from study pods to SMS fallback.</p>
+                    <div><i class="fas fa-map-marker-alt"></i> Chinhoyi, Zimbabwe · <i class="fas fa-heart" style="color: var(--vibrant-coral);"></i> For every learner</div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="proof">
-                <div class="shell">
-                    <div class="proof-grid">
-                        <article class="proof-card dark" data-reveal>
-                            <span class="eyebrow">Why families trust the model</span>
-                            <h3>Designed around real Zimbabwean friction points.</h3>
-                            <p>
-                                EduMatch tackles the issues that usually break tutoring marketplaces: unclear tutor quality, unsafe payments, weak accountability, and poor digital resilience.
-                            </p>
-                            <div class="proof-stats">
-                                <div class="proof-stat">
-                                    <strong>Verified experts</strong>
-                                    <span>Profiles built around subject depth, not just basic listings.</span>
-                                </div>
-                                <div class="proof-stat">
-                                    <strong>Guardian visibility</strong>
-                                    <span>Useful for primary and secondary learners who need oversight.</span>
-                                </div>
-                                <div class="proof-stat">
-                                    <strong>Shared-cost learning</strong>
-                                    <span>Study Pods make premium support more affordable.</span>
-                                </div>
-                                <div class="proof-stat">
-                                    <strong>Rural readiness</strong>
-                                    <span>Lite and SMS pathways help keep tutoring accessible.</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <div class="proof-stack">
-                            <article class="proof-card" data-reveal>
-                                <h3>For students</h3>
-                                <p class="quote">
-                                    "I do not just need any tutor. I need someone who understands my actual syllabus, my exam pressure, and my pace."
-                                    <strong>EduMatch answers that with structured matching.</strong>
-                                </p>
-                            </article>
-
-                            <article class="proof-card" data-reveal>
-                                <h3>For parents and guardians</h3>
-                                <p class="quote">
-                                    "I need to know who is teaching my child, whether progress is real, and when money is released."
-                                    <strong>EduMatch adds transparency and control.</strong>
-                                </p>
-                            </article>
-
-                            <article class="proof-card" data-reveal>
-                                <h3>For tutors</h3>
-                                <p class="quote">
-                                    "I want serious learners, professional visibility, and a system that rewards expertise."
-                                    <strong>EduMatch creates a stronger marketplace on both sides.</strong>
-                                </p>
-                            </article>
-                        </div>
-                    </div>
+        <!-- Second CTA -->
+        <section style="padding: 40px 0 80px;">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title" style="margin-bottom: 12px;">Ready to improve your grades?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 28px;">Browse hundreds of verified tutors — free to search. No hidden fees.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="register.html?role=student" class="hero-btn" style="font-size: 1.15rem;"><i class="fas fa-search"></i> Find a Tutor</a>
+                    <a href="register.html?role=tutor" class="hero-btn-secondary" style="font-size: 1.15rem;"><i class="fas fa-chalkboard-user"></i> Become a Tutor</a>
                 </div>
-            </section>
-
-            <section id="faq">
-                <div class="shell">
-                    <div class="section-heading" data-reveal>
-                        <span class="eyebrow">Common questions</span>
-                        <h2>The landing page should answer objections before a user has to ask.</h2>
-                        <p>
-                            These FAQs reinforce payment trust, tutor quality, and accessibility, which are central to your product story.
-                        </p>
-                    </div>
-
-                    <div class="faq-list">
-                        <article class="faq-item open" data-reveal>
-                            <button class="faq-question" type="button" aria-expanded="true">
-                <span>How is EduMatch different from a normal tutor listing site?</span>
-                <span>+</span>
-              </button>
-                            <div class="faq-answer">
-                                EduMatch uses rule-based matching to connect students with tutors based on syllabus type, level, course code, and practical learning requirements. It is designed to guide users toward a better fit instead of making them search blindly.
-                            </div>
-                        </article>
-
-                        <article class="faq-item" data-reveal>
-                            <button class="faq-question" type="button" aria-expanded="false">
-                <span>How do payments work?</span>
-                <span>+</span>
-              </button>
-                            <div class="faq-answer">
-                                Payments move through a Paynow-based escrow model that supports EcoCash, InnBucks, and ZimSwitch. This helps families feel safer because funds are linked to session confirmation rather than informal cash arrangements.
-                            </div>
-                        </article>
-
-                        <article class="faq-item" data-reveal>
-                            <button class="faq-question" type="button" aria-expanded="false">
-                <span>What happens if the learner has poor internet?</span>
-                <span>+</span>
-              </button>
-                            <div class="faq-answer">
-                                The platform includes a low-bandwidth mode and SMS fallback for reminders, updates, and practical continuity. That makes EduMatch more useful in rural and peri-urban contexts where connectivity cannot be assumed.
-                            </div>
-                        </article>
-
-                        <article class="faq-item" data-reveal>
-                            <button class="faq-question" type="button" aria-expanded="false">
-                <span>Can the platform support young learners with parent involvement?</span>
-                <span>+</span>
-              </button>
-                            <div class="faq-answer">
-                                Yes. EduMatch includes a parent or guardian module for session visibility, progress monitoring, and payment confidence. That oversight is especially important for primary and lower secondary students.
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="shell">
-                    <div class="cta-panel" data-reveal>
-                        <div>
-                            <span class="eyebrow">Landing page call to action</span>
-                            <h3>Launch EduMatch Zimbabwe with a homepage that feels credible, local, and product-driven.</h3>
-                            <p>
-                                The strongest first impression is one that immediately communicates tutor fit, payment trust, and support for Zimbabwean realities.
-                            </p>
-                            <div class="cta-actions">
-                                <a class="btn btn-primary" href="match-results.html">Open matching demo</a>
-                                <a class="btn btn-secondary" href="student-dashboard.html">View student dashboard</a>
-                            </div>
-                        </div>
-
-                        <div class="cta-list">
-                            <div>Highlight intelligent matching before generic marketplace language.</div>
-                            <div>Show the payment rails visually so trust feels concrete, not abstract.</div>
-                            <div>Give study pods, guardian visibility, and low-bandwidth support enough space to stand out.</div>
-                            <div>Keep the interface airy and modern while still clearly localized to Zimbabwe.</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+                <p style="margin-top: 24px; font-size: 0.85rem;"><i class="fas fa-shield-alt"></i> Secure payments · First session backed by satisfaction guarantee</p>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
-        <div class="shell footer-shell">
-            <div>EduMatch Zimbabwe &copy; 2026. Intelligent tutoring for primary, secondary, and tertiary learners.</div>
-            <div class="footer-links">
-                <a href="#why">Why EduMatch</a>
-                <a href="#modules">Modules</a>
-                <a href="#trust">Payments</a>
-                <a href="#faq">FAQ</a>
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;">
+                <div>
+                    <div class="logo" style="color: var(--warm-sand); background: none; -webkit-background-clip: unset;">EDUMATCH<span style="color: var(--vibrant-coral);">.zw</span></div>
+                    <p style="margin: 16px 0 12px;">Intelligent tutoring ecosystem for Zimbabwe.</p>
+                    <div style="background: #202e3f; display: inline-block; padding: 6px 14px; border-radius: 30px; font-size: 0.8rem;"><i class="fas fa-tachometer-alt"></i> Low-Bandwidth Mode (SMS Lite) ready</div>
+                </div>
+                <div>
+                    <h4 style="color: white;">Platform</h4>
+                    <p><a href="register.html?role=student" style="color: #b9c7d9;">Find Tutors</a></p>
+                    <p><a href="#" style="color: #b9c7d9;">Study Pods</a></p>
+                    <p><a href="#" style="color: #b9c7d9;">How It Works</a></p>
+                    <p><a href="register.html?role=tutor" style="color: #b9c7d9;">Become a Tutor</a></p>
+                </div>
+                <div>
+                    <h4 style="color: white;">Resources</h4>
+                    <p><a href="login.html" style="color: #b9c7d9;">Login</a></p>
+                    <p><a href="register.html" style="color: #b9c7d9;">Sign Up</a></p>
+                    <p><a href="#" style="color: #b9c7d9;">Help Center</a></p>
+                </div>
+                <div>
+                    <h4 style="color: white;">Legal</h4>
+                    <p><a href="#" style="color: #b9c7d9;">Privacy & Terms</a></p>
+                    <p><i class="fas fa-lock"></i> Paynow Escrow</p>
+                    <p>© 2026 EduMatch ZW</p>
+                </div>
             </div>
+            <hr style="margin: 32px 0 20px; border-color: #2c3f55;">
+            <div style="text-align: center; font-size: 0.8rem;">A Group 6 BSIT Project — Chinhoyi University of Technology | Digitizing education for ZIMSEC, Cambridge & Tertiary learners</div>
         </div>
     </footer>
 
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script>
-        const navToggle = document.getElementById("navToggle");
-        const siteNav = document.getElementById("siteNav");
+        // API Configuration
+        const API_BASE_URL = localStorage.getItem('API_BASE_URL') || 'https://edumatch-backend.onrender.com/api';
+        const USE_MOCK = true;
 
-        if (navToggle && siteNav) {
-            navToggle.addEventListener("click", () => {
-                const isOpen = siteNav.classList.toggle("open");
-                navToggle.setAttribute("aria-expanded", String(isOpen));
-            });
-
-            siteNav.querySelectorAll("a").forEach((link) => {
-                link.addEventListener("click", () => {
-                    siteNav.classList.remove("open");
-                    navToggle.setAttribute("aria-expanded", "false");
+        async function checkBackendHealth() {
+            const statusDiv = document.getElementById('apiStatus');
+            try {
+                const response = await fetch(`${API_BASE_URL}/health`, {
+                    method: 'GET'
                 });
-            });
-        }
-
-        const matchScenarios = {
-            primary: {
-                score: "Suggested fit: 94%",
-                title: "Primary support with guardian-approved scheduling",
-                summary: "Great for foundational literacy and numeracy support with progress updates that parents can easily follow.",
-                tags: ["Homework support", "Guardian alerts", "Nearby options"]
-            },
-            secondary: {
-                score: "Suggested fit: 96%",
-                title: "Secondary exam rescue with a ZIMSEC specialist",
-                summary: "Filter for syllabus-aligned tutors, practical revision support, and a parent-visible progress trail.",
-                tags: ["O-Level prep", "Progress checkpoints", "Weekend slots"]
-            },
-            tertiary: {
-                score: "Suggested fit: 98%",
-                title: "Course-code matching for tertiary learners",
-                summary: "Ideal for module-specific support where subject accuracy matters more than general tutoring labels.",
-                tags: ["Course code", "Assignment clinics", "Exam revision"]
-            }
-        };
-
-        const routeModifiers = {
-            zimsec: {
-                titleSuffix: " | ZIMSEC route",
-                tag: "ZIMSEC-ready"
-            },
-            cambridge: {
-                titleSuffix: " | Cambridge route",
-                tag: "Cambridge-ready"
-            },
-            "course-code": {
-                titleSuffix: " | Course-code route",
-                tag: "Faculty-aligned"
-            }
-        };
-
-        const levelSelect = document.getElementById("levelSelect");
-        const syllabusSelect = document.getElementById("syllabusSelect");
-        const needInput = document.getElementById("needInput");
-        const resultScore = document.getElementById("resultScore");
-        const resultTitle = document.getElementById("resultTitle");
-        const resultSummary = document.getElementById("resultSummary");
-        const resultTags = document.getElementById("resultTags");
-        const resultLink = document.getElementById("resultLink");
-
-        function renderMatchPreview() {
-            const level = levelSelect ? levelSelect.value : "secondary";
-            const route = syllabusSelect ? syllabusSelect.value : "zimsec";
-            const need = needInput ? needInput.value.trim() : "";
-
-            const baseScenario = matchScenarios[level] || matchScenarios.secondary;
-            const routeMeta = routeModifiers[route] || routeModifiers.zimsec;
-            const topic = need || "your selected need";
-
-            if (resultScore) {
-                resultScore.textContent = baseScenario.score;
-            }
-
-            if (resultTitle) {
-                resultTitle.textContent = `${baseScenario.title}${routeMeta.titleSuffix}`;
-            }
-
-            if (resultSummary) {
-                resultSummary.textContent = `${baseScenario.summary} Focus area: ${topic}.`;
-            }
-
-            if (resultTags) {
-                resultTags.innerHTML = "";
-                [...baseScenario.tags, routeMeta.tag].forEach((tag) => {
-                    const chip = document.createElement("span");
-                    chip.textContent = tag;
-                    resultTags.appendChild(chip);
-                });
-            }
-
-            if (resultLink) {
-                const query = new URLSearchParams({
-                    level,
-                    route,
-                    need: topic
-                });
-                resultLink.href = `match-results.html?${query.toString()}`;
+                if (response.ok) {
+                    statusDiv.textContent = '✅ System Online | EduMatch Backend Connected';
+                    statusDiv.className = 'api-status online';
+                    localStorage.setItem('backend_online', 'true');
+                } else {
+                    throw new Error('Health check failed');
+                }
+            } catch (error) {
+                console.warn('Backend health check:', error);
+                if (USE_MOCK) {
+                    statusDiv.textContent = '✅ Demo Mode | Ready for deployment — Real API health check configured';
+                    statusDiv.className = 'api-status online';
+                } else {
+                    statusDiv.textContent = '⚠️ Backend connection issue. Check API_BASE_URL';
+                    statusDiv.className = 'api-status offline';
+                }
             }
         }
 
-        [levelSelect, syllabusSelect, needInput].forEach((element) => {
-            if (element) {
-                element.addEventListener("input", renderMatchPreview);
-                element.addEventListener("change", renderMatchPreview);
+        function checkAuthRedirect() {
+            const token = localStorage.getItem('access_token');
+            const userRole = localStorage.getItem('user_role');
+            if (token && userRole && (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '')) {
+                if (userRole === 'student' || userRole === 'parent') {
+                    window.location.href = 'student-dashboard.html';
+                } else if (userRole === 'tutor') {
+                    window.location.href = 'tutor-dashboard.html';
+                }
+            }
+        }
+
+        // Scroll to top button functionality
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
             }
         });
-
-        renderMatchPreview();
-
-        document.querySelectorAll(".faq-item").forEach((item) => {
-            const button = item.querySelector(".faq-question");
-
-            if (!button) {
-                return;
-            }
-
-            button.addEventListener("click", () => {
-                const isOpen = item.classList.toggle("open");
-                button.setAttribute("aria-expanded", String(isOpen));
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
 
-        document.body.classList.add("reveal-ready");
-
-        const revealItems = document.querySelectorAll("[data-reveal]");
-
-        if ("IntersectionObserver" in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("is-visible");
-                        observer.unobserve(entry.target);
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const navbarHeight = 110;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
                     }
-                });
-            }, {
-                threshold: 0.15
+                }
             });
+        });
 
-            revealItems.forEach((item) => observer.observe(item));
-        } else {
-            revealItems.forEach((item) => item.classList.add("is-visible"));
-        }
+        checkBackendHealth();
+        checkAuthRedirect();
     </script>
 </body>
 
