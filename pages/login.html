@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>EduMatch Zimbabwe | Log in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --indigo-900: #162233;
+            --indigo-800: #1e2a3e;
+            --coral-500: #ff6b5b;
+            --coral-400: #ff8b70;
+            --teal-500: #2f8f7d;
+            --sand-100: #fff8f0;
+            --white: #ffffff;
+            --text-main: #223147;
+            --text-soft: #5d6a7e;
+            --line: rgba(30, 42, 62, 0.1);
+            --shadow-soft: 0 20px 50px rgba(22, 34, 51, 0.1);
+            --radius-xl: 32px;
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --radius-pill: 999px;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--text-main);
+            background: radial-gradient(circle at top left, rgba(255, 107, 91, 0.16), transparent 28%), radial-gradient(circle at top right, rgba(47, 143, 125, 0.18), transparent 24%), linear-gradient(180deg, #fff8f0 0%, #ffffff 100%);
+            font-family: "Manrope", "Segoe UI", sans-serif;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .shell {
+            width: min(1100px, calc(100% - 28px));
+            margin: 0 auto;
+        }
+        
+        .topbar {
+            padding: 24px 0 10px;
+        }
+        
+        .topbar a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            color: var(--indigo-800);
+        }
+        
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 480px;
+            gap: 24px;
+            align-items: center;
+            min-height: calc(100vh - 90px);
+            padding: 14px 0 42px;
+        }
+        
+        .intro {
+            padding: 20px 6px 20px 0;
+        }
+        
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: var(--radius-pill);
+            background: rgba(47, 143, 125, 0.1);
+            color: var(--teal-500);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--coral-500), var(--teal-500));
+        }
+        
+        h1 {
+            margin: 20px 0 14px;
+            font-family: "Sora", "Trebuchet MS", sans-serif;
+            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            line-height: 1;
+            letter-spacing: -0.06em;
+            color: var(--indigo-900);
+        }
+        
+        .intro p {
+            max-width: 620px;
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--text-soft);
+        }
+        
+        .points {
+            display: grid;
+            gap: 14px;
+            margin-top: 24px;
+        }
+        
+        .point {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 16px 18px;
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .point-mark {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--indigo-800), var(--coral-500));
+            font-size: 0.8rem;
+            font-weight: 800;
+            flex: none;
+        }
+        
+        .point strong {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--indigo-900);
+        }
+        
+        .card {
+            padding: 28px;
+            border-radius: var(--radius-xl);
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .card h2 {
+            margin: 0 0 8px;
+            font-family: "Sora", "Trebuchet MS", sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: -0.04em;
+            color: var(--indigo-900);
+        }
+        
+        .card p {
+            margin: 0 0 20px;
+            color: var(--text-soft);
+        }
+        
+        .roles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        
+        .role-chip {
+            padding: 10px 14px;
+            border-radius: var(--radius-pill);
+            background: rgba(22, 34, 51, 0.06);
+            color: var(--indigo-800);
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+        
+        .field {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        
+        .field label {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: var(--indigo-800);
+        }
+        
+        .field input,
+        .field select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            background: #fffdfa;
+            color: var(--text-main);
+            outline: none;
+        }
+        
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border-radius: var(--radius-pill);
+            border: 1px solid transparent;
+            font-weight: 800;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            color: var(--white);
+            background: linear-gradient(135deg, var(--coral-500), var(--coral-400));
+            box-shadow: 0 16px 28px rgba(255, 107, 91, 0.2);
+        }
+        
+        .btn-secondary {
+            color: var(--indigo-800);
+            background: rgba(255, 255, 255, 0.78);
+            border-color: var(--line);
+        }
+        
+        .helper {
+            margin-top: 14px;
+            font-size: 0.92rem;
+            color: var(--text-soft);
+        }
+        
+        .status {
+            display: none;
+            margin-top: 16px;
+            padding: 14px 16px;
+            border-radius: var(--radius-md);
+            background: rgba(47, 143, 125, 0.08);
+            color: var(--teal-500);
+            font-weight: 800;
+        }
+        
+        .status.show {
+            display: block;
+        }
+        
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 560px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+            .card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="shell topbar">
+        <a href="index.html">&larr; Back to home</a>
+    </div>
+
+    <main class="shell layout">
+        <section class="intro">
+            <span class="eyebrow">Secure account access</span>
+            <h1>Log in and continue your learning journey.</h1>
+            <p>
+                Access your EduMatch account to review matches, track learner progress, manage guardian oversight, and continue tutoring sessions with localized payment confidence.
+            </p>
+
+            <div class="points">
+                <div class="point">
+                    <span class="point-mark">01</span>
+                    <div>
+                        <strong>Students and parents</strong> Review tutor matches, lesson plans, and progress updates from one place.
+                    </div>
+                </div>
+                <div class="point">
+                    <span class="point-mark">02</span>
+                    <div>
+                        <strong>Tutors</strong> Stay organized with verified profiles, session readiness, and academic alignment.
+                    </div>
+                </div>
+                <div class="point">
+                    <span class="point-mark">03</span>
+                    <div>
+                        <strong>Low-bandwidth friendly</strong> Keep the interface lightweight while still giving users a clear sign-in path.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Welcome back</h2>
+            <p>Use this prototype screen to represent the EduMatch sign-in flow.</p>
+
+            <div class="roles" aria-label="Supported account types">
+                <span class="role-chip">Student</span>
+                <span class="role-chip">Parent</span>
+                <span class="role-chip">Tutor</span>
+            </div>
+
+            <form id="loginForm">
+                <div class="field">
+                    <label for="loginRole">Account type</label>
+                    <select id="loginRole" name="role">
+            <option value="student">Student</option>
+            <option value="parent">Parent / Guardian</option>
+            <option value="tutor">Tutor</option>
+          </select>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email or mobile number</label>
+                    <input id="email" name="email" type="text" placeholder="name@example.com or 07xx xxx xxx">
+                </div>
+
+                <div class="row">
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input id="password" name="password" type="password" placeholder="Enter your password">
+                    </div>
+
+                    <div class="field">
+                        <label for="location">Preferred region</label>
+                        <select id="location" name="location">
+              <option>Harare</option>
+              <option>Bulawayo</option>
+              <option>Chinhoyi</option>
+              <option>Mutare</option>
+              <option>Remote / Any</option>
+            </select>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-primary" type="submit">Log in</button>
+                    <a class="btn btn-secondary" href="register.html">Create account</a>
+                </div>
+            </form>
+
+            <div class="status" id="loginStatus"></div>
+            <div class="helper">Prototype note: this screen is for UI flow and does not connect to a backend yet.</div>
+        </section>
+    </main>
+
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const loginStatus = document.getElementById("loginStatus");
+
+        if (loginForm && loginStatus) {
+            loginForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                const role = document.getElementById("loginRole").value;
+                loginStatus.textContent = `Prototype login captured for ${role}. Connect this form to your real authentication flow next.`;
+                loginStatus.classList.add("show");
+            });
+        }
+    </script>
+</body>
+
+</html>
