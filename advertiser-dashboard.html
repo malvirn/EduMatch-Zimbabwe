@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduMatch Zimbabwe | Advertiser Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --indigo: #1e2a3e;
+      --coral: #ff6b5b;
+      --teal: #2f8f7d;
+      --sand: #fff8f0;
+      --white: #ffffff;
+      --muted: #6b7280;
+      --border: rgba(30, 42, 62, 0.1);
+      --shadow: 0 18px 44px rgba(30, 42, 62, 0.1);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--indigo);
+      background:
+        radial-gradient(circle at top right, rgba(47, 143, 125, 0.12), transparent 26%),
+        radial-gradient(circle at top left, rgba(255, 107, 91, 0.1), transparent 28%),
+        linear-gradient(180deg, #fffaf4 0%, var(--sand) 100%);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--indigo), #2a3b55);
+      color: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 107, 91, 0.28), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.9);
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      letter-spacing: -0.04em;
+      line-height: 1.04;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.65;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 12px 24px rgba(30, 42, 62, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .panel-header {
+      padding: 20px 20px 0;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .panel-subtitle {
+      color: var(--muted);
+      margin: 8px 0 0;
+      line-height: 1.5;
+      font-size: 0.96rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .summary-card {
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(180deg, #fff, #fff7f1);
+      border: 1px solid rgba(30, 42, 62, 0.08);
+    }
+
+    .label { color: var(--muted); font-size: 0.88rem; margin-bottom: 8px; }
+    .value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; }
+    .teal { color: var(--teal); }
+    .coral { color: var(--coral); }
+
+    .campaign {
+      padding: 18px 20px;
+      border-top: 1px solid rgba(30, 42, 62, 0.08);
+      display: grid;
+      gap: 8px;
+    }
+
+    .campaign:first-of-type { border-top: 0; }
+    .campaign-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .campaign h3 { margin: 0; }
+    .meta { color: var(--muted); font-size: 0.94rem; line-height: 1.5; }
+
+    .bar {
+      width: 100%;
+      height: 12px;
+      border-radius: 999px;
+      background: #f1e7db;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+    .bar > span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), #60bca9);
+    }
+
+    .metrics {
+      display: grid;
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .metric-card {
+      border-radius: 18px;
+      padding: 16px 18px;
+      border: 1px solid rgba(30, 42, 62, 0.08);
+      background: #fff;
+    }
+
+    .metric-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .metric-card span {
+      color: var(--muted);
+      line-height: 1.55;
+      display: block;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .pill.live { background: rgba(47, 143, 125, 0.12); color: var(--teal); }
+    .pill.paused { background: rgba(255, 107, 91, 0.12); color: var(--coral); }
+
+    .form {
+      padding: 20px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--indigo);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(30, 42, 62, 0.14);
+      border-radius: 14px;
+      padding: 14px 15px;
+      font: inherit;
+      color: var(--indigo);
+      background: var(--white);
+    }
+
+    textarea { min-height: 102px; resize: vertical; }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 18px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--coral); color: var(--white); box-shadow: 0 12px 22px rgba(255, 107, 91, 0.24); }
+    .btn-secondary { background: rgba(47, 143, 125, 0.12); color: var(--teal); }
+
+    .status {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="eyebrow">Advertiser Campaign Center</div>
+      <h1>Campaigns, live metrics, and budget control</h1>
+      <p>Advertisers can create real campaigns, monitor active spend, track clicks and conversions, and manage campaign status from backend-powered data only.</p>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Performance Summary</h2>
+          <p class="panel-subtitle">These totals are fetched from your production metrics endpoint.</p>
+        </div>
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="label">Impressions</div>
+            <div class="value teal" id="impressions">Loading...</div>
+          </div>
+          <div class="summary-card">
+            <div class="label">Clicks</div>
+            <div class="value coral" id="clicks">Loading...</div>
+          </div>
+          <div class="summary-card">
+            <div class="label">Conversions</div>
+            <div class="value" id="conversions">Loading...</div>
+          </div>
+        </div>
+
+        <div id="campaignList">
+          <div class="campaign">Loading campaign data...</div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Create Campaign</h2>
+          <p class="panel-subtitle">Submit a new advertiser campaign to the backend.</p>
+        </div>
+        <form class="form" id="campaignForm">
+          <div class="field">
+            <label for="campaignName">Campaign Name</label>
+            <input id="campaignName" name="campaignName" required placeholder="Back-to-school tutoring drive" />
+          </div>
+          <div class="field">
+            <label for="objective">Objective</label>
+            <select id="objective" name="objective" required>
+              <option value="awareness">Awareness</option>
+              <option value="traffic">Traffic</option>
+              <option value="leads">Leads</option>
+              <option value="conversions">Conversions</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="budget">Budget</label>
+            <input id="budget" name="budget" required type="number" min="0" step="0.01" placeholder="0.00" />
+          </div>
+          <div class="field">
+            <label for="targeting">Target Audience</label>
+            <input id="targeting" name="targeting" placeholder="Parents in Harare, Forms 1-4" />
+          </div>
+          <div class="field">
+            <label for="message">Campaign Message</label>
+            <textarea id="message" name="message" placeholder="Add the ad copy, offer, or promotion details"></textarea>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Create Campaign</button>
+            <a class="btn btn-secondary" href="payments.html">Go to Payments</a>
+          </div>
+          <p class="status" id="formStatus">Waiting for backend response.</p>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE_URL = localStorage.getItem('API_BASE_URL') || 'https://edumatch-backend.onrender.com/api';
+
+    function formatNumber(value) {
+      if (value === null || value === undefined || value === '') return 'N/A';
+      const num = Number(value);
+      if (Number.isFinite(num)) return new Intl.NumberFormat('en-US').format(num);
+      return String(value);
+    }
+
+    function renderCampaign(campaign) {
+      const article = document.createElement('article');
+      article.className = 'campaign';
+      const status = String(campaign.status || '').toLowerCase();
+      article.innerHTML = `
+        <div class="campaign-top">
+          <div>
+            <h3>${campaign.name || campaign.campaignName || 'Untitled Campaign'}</h3>
+            <div class="meta">${campaign.objective || 'objective not provided'} | Budget: ${campaign.budget ?? campaign.spent ?? 'N/A'}</div>
+          </div>
+          <span class="pill ${status === 'live' || status === 'active' ? 'live' : 'paused'}">${campaign.status || 'inactive'}</span>
+        </div>
+        <div class="meta">${campaign.targeting || campaign.audience || 'Target audience not provided'}</div>
+        <div class="bar"><span style="width:${campaign.progress ?? campaign.fill ?? 0}%"></span></div>
+        <div class="meta">Clicks: ${formatNumber(campaign.clicks)} | Conversions: ${formatNumber(campaign.conversions)} | CTR: ${campaign.ctr ?? 'N/A'}</div>
+      `;
+      return article;
+    }
+
+    async function loadSummary() {
+      const response = await fetch(`${API_BASE_URL}/advertiser/metrics`, {
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) {
+        throw new Error('Unable to load advertiser metrics.');
+      }
+      const metrics = await response.json();
+      document.getElementById('impressions').textContent = formatNumber(metrics.impressions);
+      document.getElementById('clicks').textContent = formatNumber(metrics.clicks);
+      document.getElementById('conversions').textContent = formatNumber(metrics.conversions);
+    }
+
+    async function loadCampaigns() {
+      const response = await fetch(`${API_BASE_URL}/advertiser/campaigns`, {
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) {
+        throw new Error('Unable to load campaigns.');
+      }
+      const result = await response.json();
+      const campaigns = Array.isArray(result) ? result : (result.campaigns || result.items || []);
+      const list = document.getElementById('campaignList');
+      list.innerHTML = '';
+      if (!campaigns.length) {
+        list.innerHTML = '<div class="campaign">No live campaigns returned by the backend.</div>';
+      } else {
+        campaigns.forEach(campaign => list.appendChild(renderCampaign(campaign)));
+      }
+    }
+
+    document.getElementById('campaignForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const status = document.getElementById('formStatus');
+      const payload = {
+        name: document.getElementById('campaignName').value.trim(),
+        objective: document.getElementById('objective').value,
+        budget: Number(document.getElementById('budget').value),
+        targeting: document.getElementById('targeting').value.trim(),
+        message: document.getElementById('message').value.trim()
+      };
+
+      status.textContent = 'Submitting campaign...';
+      const response = await fetch(`${API_BASE_URL}/advertiser/campaigns`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || 'Campaign creation failed.');
+      }
+
+      status.textContent = 'Campaign created successfully.';
+      event.target.reset();
+      await Promise.all([loadSummary(), loadCampaigns()]);
+    });
+
+    Promise.all([loadSummary(), loadCampaigns()]).catch((error) => {
+      document.getElementById('formStatus').textContent = error.message;
+      document.getElementById('campaignList').innerHTML = `<div class="campaign">${error.message}</div>`;
+    });
+  </script>
+</body>
+</html>

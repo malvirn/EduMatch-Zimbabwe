@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduMatch Zimbabwe | Payments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --indigo: #1e2a3e;
+      --coral: #ff6b5b;
+      --teal: #2f8f7d;
+      --sand: #fff8f0;
+      --white: #ffffff;
+      --muted: #6b7280;
+      --border: rgba(30, 42, 62, 0.1);
+      --shadow: 0 18px 44px rgba(30, 42, 62, 0.1);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--indigo);
+      background:
+        radial-gradient(circle at top left, rgba(255, 107, 91, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(47, 143, 125, 0.12), transparent 30%),
+        linear-gradient(180deg, #fffaf4 0%, var(--sand) 100%);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--indigo), #2a3b55);
+      color: var(--white);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -90px -90px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 107, 91, 0.3), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.9);
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      letter-spacing: -0.04em;
+      line-height: 1.04;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.65;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 12px 24px rgba(30, 42, 62, 0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .panel-header {
+      padding: 20px 20px 0;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .panel-subtitle {
+      color: var(--muted);
+      margin: 8px 0 0;
+      line-height: 1.5;
+      font-size: 0.96rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .summary-card {
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(180deg, #fff, #fff7f1);
+      border: 1px solid rgba(30, 42, 62, 0.08);
+    }
+
+    .label { color: var(--muted); font-size: 0.88rem; margin-bottom: 8px; }
+    .value { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; }
+    .value.teal { color: var(--teal); }
+    .value.coral { color: var(--coral); }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+    }
+
+    .table th,
+    .table td {
+      padding: 14px 20px;
+      text-align: left;
+      border-top: 1px solid rgba(30, 42, 62, 0.08);
+      vertical-align: top;
+    }
+
+    .table th {
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .pill.escrow { background: rgba(255, 107, 91, 0.12); color: var(--coral); }
+    .pill.settled { background: rgba(47, 143, 125, 0.12); color: var(--teal); }
+
+    .form {
+      padding: 20px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--indigo);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(30, 42, 62, 0.14);
+      border-radius: 14px;
+      padding: 14px 15px;
+      font: inherit;
+      color: var(--indigo);
+      background: var(--white);
+    }
+
+    textarea { min-height: 100px; resize: vertical; }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 14px;
+      padding: 13px 18px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--coral); color: var(--white); box-shadow: 0 12px 22px rgba(255, 107, 91, 0.24); }
+    .btn-secondary { background: rgba(47, 143, 125, 0.12); color: var(--teal); }
+    .btn-dark { background: var(--indigo); color: var(--white); }
+
+    .status {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .commission-note {
+      padding: 0 20px 20px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="eyebrow">Paynow + EcoCash Escrow</div>
+      <h1>Payments, escrow release, and commission tracking</h1>
+      <p></p>
+    </section>
+
+    <div class="layout">
+      <section class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Escrow Overview</h2>
+          <p class="panel-subtitle"></p>
+        </div>
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="label">Escrow Balance</div>
+            <div class="value teal" id="escrowBalance">Loading...</div>
+          </div>
+          <div class="summary-card">
+            <div class="label">Commission Due</div>
+            <div class="value coral" id="commissionDue">Loading...</div>
+          </div>
+          <div class="summary-card">
+            <div class="label">Settled Payments</div>
+            <div class="value" id="settledCount">Loading...</div>
+          </div>
+        </div>
+
+        <div style="overflow:auto;">
+          <table class="table" aria-label="Recent payments">
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Method</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="paymentRows">
+              <tr><td colspan="5">Loading payment records...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="commission-note">
+          Commission is calculated by the backend. This page only displays the live result and sends release requests to the payment service when triggered.
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Release Funds</h2>
+          <p class="panel-subtitle">Send a production release request after a lesson is confirmed complete.</p>
+        </div>
+        <form class="form" id="releaseForm">
+          <div class="field">
+            <label for="paymentId">Payment ID</label>
+            <input id="paymentId" name="paymentId" required placeholder="pay_..." />
+          </div>
+          <div class="field">
+            <label for="amount">Release Amount</label>
+            <input id="amount" name="amount" required type="number" min="0" step="0.01" placeholder="0.00" />
+          </div>
+          <div class="field">
+            <label for="method">Provider</label>
+            <select id="method" name="method" required>
+              <option value="paynow">Paynow</option>
+              <option value="ecocash">EcoCash</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="note">Release Note</label>
+            <textarea id="note" name="note" placeholder="Add a short settlement note for the audit trail"></textarea>
+          </div>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Release from Escrow</button>
+            <a class="btn btn-secondary" href="payments.html">Refresh View</a>
+          </div>
+          <p class="status" id="formStatus">Waiting for backend response.</p>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE_URL = localStorage.getItem('API_BASE_URL') || 'https://edumatch-backend.onrender.com/api';
+
+    function formatMoney(value) {
+      if (value === null || value === undefined || value === "") return "N/A";
+      const num = Number(value);
+      if (Number.isFinite(num)) {
+        return new Intl.NumberFormat('en-ZW', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(num);
+      }
+      return String(value);
+    }
+
+    function renderRow(payment) {
+      const tr = document.createElement('tr');
+      const status = String(payment.status || '').toLowerCase();
+      tr.innerHTML = `
+        <td>${payment.reference || payment.id || 'N/A'}</td>
+        <td>${payment.method || payment.provider || 'N/A'}</td>
+        <td>${formatMoney(payment.amount)}</td>
+        <td><span class="pill ${status === 'settled' || status === 'released' ? 'settled' : 'escrow'}">${payment.status || 'pending'}</span></td>
+        <td>
+          <button class="btn btn-dark" type="button" data-release="${payment.reference || payment.id || ''}">Open</button>
+        </td>
+      `;
+      return tr;
+    }
+
+    async function loadPayments() {
+      const rows = document.getElementById('paymentRows');
+      const status = document.getElementById('formStatus');
+
+      const response = await fetch(`${API_BASE_URL}/payments`, {
+        headers: { Accept: 'application/json' }
+      });
+
+      if (!response.ok) {
+        throw new Error('Unable to load live payment records.');
+      }
+
+      const result = await response.json();
+      const items = Array.isArray(result) ? result : (result.payments || result.records || []);
+      rows.innerHTML = '';
+      if (!items.length) {
+        rows.innerHTML = '<tr><td colspan="5">No live payment records were returned by the backend.</td></tr>';
+      } else {
+        items.forEach(item => rows.appendChild(renderRow(item)));
+      }
+      status.textContent = 'Live payment data loaded successfully.';
+      return items;
+    }
+
+    async function loadSummary() {
+      const response = await fetch(`${API_BASE_URL}/payments/summary`, {
+        headers: { Accept: 'application/json' }
+      });
+      if (!response.ok) {
+        throw new Error('Unable to load payment summary.');
+      }
+      const summary = await response.json();
+      document.getElementById('escrowBalance').textContent = formatMoney(summary.escrowBalance ?? summary.escrow_balance);
+      document.getElementById('commissionDue').textContent = formatMoney(summary.commissionDue ?? summary.commission_due);
+      document.getElementById('settledCount').textContent = summary.settledCount ?? summary.settled_count ?? '0';
+    }
+
+    document.getElementById('releaseForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const status = document.getElementById('formStatus');
+      const payload = {
+        paymentId: document.getElementById('paymentId').value.trim(),
+        amount: Number(document.getElementById('amount').value),
+        provider: document.getElementById('method').value,
+        note: document.getElementById('note').value.trim()
+      };
+
+      status.textContent = 'Submitting release request...';
+
+      const response = await fetch(`${API_BASE_URL}/payments/release`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || 'Release request failed.');
+      }
+
+      status.textContent = 'Release request submitted to the payment backend.';
+      await Promise.all([loadPayments(), loadSummary()]);
+      event.target.reset();
+    });
+
+    Promise.all([loadPayments(), loadSummary()]).catch((error) => {
+      document.getElementById('formStatus').textContent = error.message;
+      document.getElementById('paymentRows').innerHTML = `<tr><td colspan="5">${error.message}</td></tr>`;
+    });
+  </script>
+</body>
+</html>
